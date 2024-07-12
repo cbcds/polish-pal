@@ -10,6 +10,13 @@ android {
 dependencies {
     commonMainImplementation(project(":shared:core:ui"))
 
-    commonMainImplementation(compose.foundation)
-    commonMainImplementation(compose.components.uiToolingPreview)
+    commonMainImplementation(compose.components.resources)
+    commonMainImplementation(libs.voyager.navigator)
+    commonMainImplementation(libs.voyager.screenmodel)
+    commonMainImplementation(libs.voyager.tab.navigator)
+}
+
+compose.resources {
+    packageOfResClass = "com.cbcds.polishpal.shared.app"
+    publicResClass = false
 }

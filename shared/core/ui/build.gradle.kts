@@ -8,7 +8,14 @@ android {
 }
 
 dependencies {
-    commonMainImplementation(compose.material3)
+    commonMainApi(compose.foundation)
+    commonMainApi(compose.material3)
+    commonMainApi(compose.components.uiToolingPreview)
+
     commonMainImplementation(compose.components.resources)
-    commonMainImplementation(compose.components.uiToolingPreview)
+}
+
+compose.resources {
+    packageOfResClass = "com.cbcds.polishpal.shared.core.ui"
+    publicResClass = true
 }
