@@ -3,10 +3,4 @@
     <string name="nav_title_vocabulary">Słownik</string>
     <string name="nav_title_main">Główna</string>
     <string name="nav_title_settings">Ustawienia</string>
-
-    <string name="main_screen_title">Uczmy się\npolskiego!</string>
-
-    <string name="learning_mode_indicative">Tryb oznajmujący</string>
-    <string name="learning_mode_imperative">Tryb rozkazujący</string>
-    <string name="learning_mode_conditional">Tryb warunkowy</string>
 </resources>

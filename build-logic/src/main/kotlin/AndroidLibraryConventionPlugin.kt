@@ -4,6 +4,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.get
 import utils.Java
+import utils.addKotlinUtilsDependencyIfNeeded
 import utils.configureKotlinAndroid
 import utils.libVersion
 import utils.pluginId
@@ -40,5 +41,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 targetCompatibility = Java.targetCompatibility
             }
         }
+
+        target.addKotlinUtilsDependencyIfNeeded()
     }
 }

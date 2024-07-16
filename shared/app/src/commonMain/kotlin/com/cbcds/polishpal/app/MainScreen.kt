@@ -46,19 +46,15 @@ import org.jetbrains.compose.resources.vectorResource
 import com.cbcds.polishpal.shared.core.ui.Res as uiRes
 
 @Composable
-fun MainScreen() {
+internal fun MainScreen() {
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.padding(20.dp),
     ) {
-        Header(
-            modifier = Modifier.weight(1f),
-        )
-        Spacer(
-            modifier = Modifier.height(28.dp),
-        )
+        Header(Modifier.weight(1f))
+        Spacer(Modifier.height(28.dp))
         LearningModeCards(
-            modifier = Modifier
+            Modifier
                 .verticalScroll(rememberScrollState())
                 .weight(2f),
         )
@@ -81,6 +77,7 @@ private fun Header(
         Image(
             painter = painterResource(Res.drawable.hero),
             contentDescription = null,
+            modifier = Modifier.height(132.dp),
         )
     }
 }
@@ -131,9 +128,7 @@ private fun LearningModeCard(
     onSettingsClick: () -> Unit = {},
     onClick: () -> Unit,
 ) {
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth()
-    ) {
+    ElevatedCard(Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {

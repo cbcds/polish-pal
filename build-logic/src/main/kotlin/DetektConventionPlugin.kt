@@ -19,7 +19,8 @@ class DetektConventionPlugin : Plugin<Project> {
             autoCorrect = true
             setSource(target.projectDir)
             include("**/*.kt", "**/*.kts")
-            exclude("**/resources/**", "**/build/**")
+            // TODO delete iosMain
+            exclude("**/resources/**", "**/build/**", "**/iosMain/**")
             config.setFrom(project.file("detekt.yml"))
 
             reports {

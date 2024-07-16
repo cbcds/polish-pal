@@ -1,5 +1,6 @@
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import utils.addKotlinUtilsDependencyIfNeeded
 import utils.configureKotlinAndroid
 import utils.pluginId
 
@@ -15,5 +16,7 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
 
         // For now, iOS builds are not supported
         // target.configureKotlinIos()
+
+        target.addKotlinUtilsDependencyIfNeeded()
     }
 }

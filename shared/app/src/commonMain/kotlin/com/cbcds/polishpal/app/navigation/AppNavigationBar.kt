@@ -13,7 +13,7 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 
 @Composable
-fun AppNavigationBar() {
+internal fun AppNavigationBar() {
     NavigationBar {
         TabNavigationItem(VocabularyTab)
         TabNavigationItem(MainTab)

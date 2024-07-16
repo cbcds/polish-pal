@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.cbcds.polishpal.shared.core.ui"
+    namespace = "com.cbcds.polishpal.core.ui"
 }
 
 dependencies {

@@ -1,6 +1,5 @@
 package com.cbcds.polishpal.core.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -14,11 +13,11 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun AppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkThemeEnabled: Boolean,
     content: @Composable () -> Unit,
 ) {
-    val colorScheme = if (darkTheme) darkScheme else lightScheme
-    val extendedColorScheme = if (darkTheme) extendedDarkScheme else extendedLightScheme
+    val colorScheme = if (darkThemeEnabled) darkScheme else lightScheme
+    val extendedColorScheme = if (darkThemeEnabled) extendedDarkScheme else extendedLightScheme
 
     CompositionLocalProvider(LocalExtendedColorScheme provides extendedColorScheme) {
         MaterialTheme(

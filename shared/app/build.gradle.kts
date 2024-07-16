@@ -4,16 +4,18 @@ plugins {
 }
 
 android {
-    namespace = "com.cbcds.polishpal.shared.app"
+    namespace = "com.cbcds.polishpal.app"
 }
 
 dependencies {
+    commonMainApi(project(":shared:feature:settings"))
+    commonMainImplementation(project(":shared:core:navigation"))
     commonMainImplementation(project(":shared:core:ui"))
+    commonMainImplementation(project(":shared:data"))
 
     commonMainImplementation(compose.components.resources)
-    commonMainImplementation(libs.voyager.navigator)
-    commonMainImplementation(libs.voyager.screenmodel)
-    commonMainImplementation(libs.voyager.tab.navigator)
+    commonMainImplementation(libs.koin.core)
+    commonMainImplementation(libs.koin.compose)
 }
 
 compose.resources {

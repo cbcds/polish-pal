@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="setting_theme">Тэма</string>
+    <string name="setting_language">Мова</string>
+    <string name="setting_notifications">Паведамленні</string>
+    <string name="setting_notifiy_me_at">Паведамі мяне а</string>
+    <string name="setting_send_feedback">Даслаць водгук</string>
+    <string name="setting_share_app">Падзяліцца</string>
+    <string name="setting_rate_app">Ацаніць</string>
+    <string name="setting_about_app">Aб дадатку</string>
+
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Цёмная</string>
+    <string name="theme_system">Сістэмная</string>
+
+    <string name="time_picker_title">Выбяры час</string>
+</resources>

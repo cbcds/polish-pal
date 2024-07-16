@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_learning_channel_name">Learning reminder</string>
+    <string name="notification_learning_reminder">It\'s time to learn Polish!</string>
+
+    <string name="notifications_permissions_rationale">Permissions are required for displaying notifications</string>
+    <string name="notifications_enable_in_settings">You need to enable notifications in settings</string>
+    <string name="alarms_enable_in_settings">You need to enable alarms in settings</string>
+
+    <string name="no_email_app_found">No email app found</string>
+    <string name="no_messaging_app_found">No messaging app found</string>
+</resources>
