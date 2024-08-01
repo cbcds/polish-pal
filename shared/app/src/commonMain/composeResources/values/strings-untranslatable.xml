@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="main_screen_title" translatable="false">Uczmy się\npolskiego!</string>
-
-    <string name="learning_mode_indicative" translatable="false">Tryb oznajmujący</string>
-    <string name="learning_mode_imperative" translatable="false">Tryb rozkazujący</string>
-    <string name="learning_mode_conditional" translatable="false">Tryb warunkowy</string>
 </resources>

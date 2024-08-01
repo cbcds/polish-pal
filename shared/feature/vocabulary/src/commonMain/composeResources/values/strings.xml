@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="find_word">Wyszukać słowo...</string>
+
+    <string name="filter_favorites">Ulubione</string>
+
+    <string name="filter_aspect_imperfective">Niedokonane</string>
+    <string name="filter_aspect_perfective">Dokonane</string>
+    <string name="filter_aspect_all">Wszystkie</string>
+
+    <string name="tab_mood_indicative">Tryb ozn.</string>
+    <string name="tab_mood_imperative">Tryb rozk.</string>
+    <string name="tab_mood_conditional">Tryb war.</string>
+</resources>

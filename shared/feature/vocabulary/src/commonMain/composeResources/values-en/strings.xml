@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="find_word">Find a word...</string>
+
+    <string name="filter_favorites">Favorites</string>
+
+    <string name="filter_aspect_imperfective">Imperfective</string>
+    <string name="filter_aspect_perfective">Perfective</string>
+    <string name="filter_aspect_all">All</string>
+
+    <string name="tab_mood_indicative">Ind. mood</string>
+    <string name="tab_mood_imperative">Imp. mood</string>
+    <string name="tab_mood_conditional">Cond. mood</string>
+</resources>

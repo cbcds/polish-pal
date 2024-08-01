@@ -1,6 +1,6 @@
 package com.cbcds.polishpal.feature.settings
 
-import com.cbcds.polishpal.data.model.AppSettings
+import com.cbcds.polishpal.data.model.settings.AppSettings
 
 internal sealed interface SettingsUiState {
 

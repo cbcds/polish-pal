@@ -2,10 +2,10 @@ package com.cbcds.polishpal.feature.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cbcds.polishpal.data.model.AppSettings
-import com.cbcds.polishpal.data.model.Locale
-import com.cbcds.polishpal.data.model.Theme
-import com.cbcds.polishpal.data.repository.AppSettingsRepository
+import com.cbcds.polishpal.data.model.settings.AppSettings
+import com.cbcds.polishpal.data.model.settings.Locale
+import com.cbcds.polishpal.data.model.settings.Theme
+import com.cbcds.polishpal.data.repository.settings.AppSettingsRepository
 import com.cbcds.polishpal.feature.settings.notifications.NotificationsScheduler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

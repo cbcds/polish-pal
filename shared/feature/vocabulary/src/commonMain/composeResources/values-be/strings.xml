@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="find_word">Знайсці слова...</string>
+
+    <string name="filter_favorites">Улюбёныя</string>
+
+    <string name="filter_aspect_imperfective">Незакончаныя</string>
+    <string name="filter_aspect_perfective">Закончаныя</string>
+    <string name="filter_aspect_all">Усе</string>
+
+    <string name="tab_mood_indicative">Абв. лад</string>
+    <string name="tab_mood_imperative">Заг. лад</string>
+    <string name="tab_mood_conditional">Ум. лад</string>
+</resources>

@@ -25,8 +25,8 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.cbcds.polishpal.core.ui.component.ElevatedCard
 import com.cbcds.polishpal.core.ui.component.Switch
 import com.cbcds.polishpal.core.ui.theme.AppTheme
-import com.cbcds.polishpal.data.model.Locale
-import com.cbcds.polishpal.data.model.Theme
+import com.cbcds.polishpal.data.model.settings.Locale
+import com.cbcds.polishpal.data.model.settings.Theme
 import com.cbcds.polishpal.feature.settings.navigation.AboutAppScreen
 import com.cbcds.polishpal.feature.settings.notifications.AskForNotificationPermissions
 import com.cbcds.polishpal.shared.core.ui.ic_bell_outline
@@ -77,7 +77,9 @@ internal fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(20.dp),
-                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 16.dp),
+                modifier = Modifier
+                    .padding(top = 12.dp, bottom = 16.dp)
+                    .padding(horizontal = 20.dp),
             ) {
                 GeneralSettings(
                     theme = settings.theme,

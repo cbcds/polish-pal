@@ -9,7 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.cbcds.polishpal.data.model.Locale
+import com.cbcds.polishpal.data.model.settings.Locale
 
 @Composable
 internal actual fun LanguageMenu(

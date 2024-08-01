@@ -1,10 +1,10 @@
-package com.cbcds.polishpal.data.repository
+package com.cbcds.polishpal.data.repository.settings
 
 import com.cbcds.polishpal.data.datasource.LocaleProvider
 import com.cbcds.polishpal.data.datasource.prefs.Preferences
-import com.cbcds.polishpal.data.model.AppSettings
-import com.cbcds.polishpal.data.model.Locale
-import com.cbcds.polishpal.data.model.Theme
+import com.cbcds.polishpal.data.model.settings.AppSettings
+import com.cbcds.polishpal.data.model.settings.Locale
+import com.cbcds.polishpal.data.model.settings.Theme
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -14,31 +14,31 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.datetime.LocalTime
 
-class AppSettingsRepository(
+internal class AppSettingsRepositoryImpl(
     private val preferences: Preferences,
     private val localeProvider: LocaleProvider,
     externalScope: CoroutineScope,
     ioDispatcher: CoroutineDispatcher,
-) {
+) : AppSettingsRepository {
 
     private val coroutineScope = CoroutineScope(externalScope.coroutineContext + ioDispatcher)
 
-    val settings: StateFlow<AppSettings?> = readSettings()
+    override val settings: StateFlow<AppSettings?> = readSettings()
         .stateIn(coroutineScope, SharingStarted.Eagerly, null)
 
-    fun setTheme(theme: Theme) {
+    override fun setTheme(theme: Theme) {
         preferences.writeString(KEY_THEME, theme.name)
     }
 
-    fun setLocale(locale: Locale) {
+    override fun setLocale(locale: Locale) {
         localeProvider.setLocale(locale)
     }
 
-    fun setNotificationsEnabled(enabled: Boolean) {
+    override fun setNotificationsEnabled(enabled: Boolean) {
         preferences.writeBoolean(KEY_NOTIFICATIONS_ENABLED, enabled)
     }
 
-    fun setNotificationsTime(time: LocalTime) {
+    override fun setNotificationsTime(time: LocalTime) {
         preferences.writeInt(KEY_NOTIFICATIONS_TIME_SECONDS, time.toSecondOfDay())
     }
 

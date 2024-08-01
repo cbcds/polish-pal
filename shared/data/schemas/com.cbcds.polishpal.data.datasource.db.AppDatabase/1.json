@@ -1,0 +1,212 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "a84604084cdd2cefb391500802ab5594",
+    "entities": [
+      {
+        "tableName": "verbs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `inf` TEXT NOT NULL, `dkn` INTEGER NOT NULL, `ozn_trz/przy_lp_1os` TEXT NOT NULL, `ozn_trz/przy_lp_2os` TEXT NOT NULL, `ozn_trz/przy_lp_3os` TEXT NOT NULL, `ozn_trz/przy_lm_1os` TEXT NOT NULL, `ozn_trz/przy_lm_2os` TEXT NOT NULL, `ozn_trz/przy_lm_3os` TEXT NOT NULL, `ozn_przesz_lp_1os_rm` TEXT NOT NULL, `ozn_przesz_lp_1os_rż` TEXT NOT NULL, `ozn_przesz_lp_2os_rm` TEXT NOT NULL, `ozn_przesz_lp_2os_rż` TEXT NOT NULL, `ozn_przesz_lp_3os_rm` TEXT NOT NULL, `ozn_przesz_lp_3os_rż` TEXT NOT NULL, `ozn_przesz_lp_3os_rn` TEXT NOT NULL, `ozn_przesz_lm_1os_rmo` TEXT NOT NULL, `ozn_przesz_lm_1os_rnmo` TEXT NOT NULL, `ozn_przesz_lm_2os_rmo` TEXT NOT NULL, `ozn_przesz_lm_2os_rnmo` TEXT NOT NULL, `ozn_przesz_lm_3os_rmo` TEXT NOT NULL, `ozn_przesz_lm_3os_rnmo` TEXT NOT NULL, `rozk_lp_2os` TEXT NOT NULL, `rozk_lm_1os` TEXT NOT NULL, `rozk_lm_2os` TEXT NOT NULL, `def` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "infinitive",
+            "columnName": "inf",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "aspect",
+            "columnName": "dkn",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_trz_przy_lp_1os",
+            "columnName": "ozn_trz/przy_lp_1os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_trz_przy_lp_2os",
+            "columnName": "ozn_trz/przy_lp_2os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_trz_przy_lp_3os",
+            "columnName": "ozn_trz/przy_lp_3os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_trz_przy_lm_1os",
+            "columnName": "ozn_trz/przy_lm_1os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_trz_przy_lm_2os",
+            "columnName": "ozn_trz/przy_lm_2os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_trz_przy_lm_3os",
+            "columnName": "ozn_trz/przy_lm_3os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lp_1os_rm",
+            "columnName": "ozn_przesz_lp_1os_rm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lp_1os_rz",
+            "columnName": "ozn_przesz_lp_1os_rż",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lp_2os_rm",
+            "columnName": "ozn_przesz_lp_2os_rm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lp_2os_rz",
+            "columnName": "ozn_przesz_lp_2os_rż",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lp_3os_rm",
+            "columnName": "ozn_przesz_lp_3os_rm",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lp_3os_rz",
+            "columnName": "ozn_przesz_lp_3os_rż",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lp_3os_rn",
+            "columnName": "ozn_przesz_lp_3os_rn",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lm_1os_rmo",
+            "columnName": "ozn_przesz_lm_1os_rmo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lm_1os_rnmo",
+            "columnName": "ozn_przesz_lm_1os_rnmo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lm_2os_rmo",
+            "columnName": "ozn_przesz_lm_2os_rmo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lm_2os_rnmo",
+            "columnName": "ozn_przesz_lm_2os_rnmo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lm_3os_rmo",
+            "columnName": "ozn_przesz_lm_3os_rmo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ozn_przesz_lm_3os_rnmo",
+            "columnName": "ozn_przesz_lm_3os_rnmo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rozk_lp_2os",
+            "columnName": "rozk_lp_2os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rozk_lm_1os",
+            "columnName": "rozk_lm_1os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rozk_lm_2os",
+            "columnName": "rozk_lm_2os",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "definition",
+            "columnName": "def",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "favorite_verbs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`id`) REFERENCES `verbs`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "verbs",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a84604084cdd2cefb391500802ab5594')"
+    ]
+  }
+}

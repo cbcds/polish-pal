@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="title_mood_indicative">Абвесны лад</string>
+    <string name="title_mood_imperative">Загадны лад</string>
+    <string name="title_mood_conditional">Умоўны лад</string>
+
+    <string name="title_tense_past">Мінулы час</string>
+    <string name="title_tense_present">Цяперашні час</string>
+    <string name="title_tense_future">Будучы час</string>
+
+    <string name="label_number_singular">адз. л.</string>
+    <string name="label_number_plural">мн. л.</string>
+
+    <string name="label_gender_masculine">м. р.</string>
+    <string name="label_gender_masculine_personal">ас.-м.\nр.</string>
+    <string name="label_gender_non_masculine_personal">неас.-м.\nр.</string>
+    <string name="label_gender_feminine">ж. р.</string>
+    <string name="label_gender_neuter">н. р.</string>
+</resources>

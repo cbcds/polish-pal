@@ -13,11 +13,13 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun AppTheme(
-    darkThemeEnabled: Boolean,
+    darkTheme: Boolean,
     content: @Composable () -> Unit,
 ) {
-    val colorScheme = if (darkThemeEnabled) darkScheme else lightScheme
-    val extendedColorScheme = if (darkThemeEnabled) extendedDarkScheme else extendedLightScheme
+    applyThemeToSystemElements(darkTheme)
+
+    val colorScheme = if (darkTheme) darkScheme else lightScheme
+    val extendedColorScheme = if (darkTheme) extendedDarkScheme else extendedLightScheme
 
     CompositionLocalProvider(LocalExtendedColorScheme provides extendedColorScheme) {
         MaterialTheme(
@@ -26,6 +28,9 @@ fun AppTheme(
         )
     }
 }
+
+@Composable
+internal expect fun applyThemeToSystemElements(darkTheme: Boolean)
 
 object AppTheme {
 
@@ -47,6 +52,7 @@ val LocalExtendedColorScheme = staticCompositionLocalOf {
         accent1 = ColorFamily.Unspecified,
         accent2 = ColorFamily.Unspecified,
         accent3 = ColorFamily.Unspecified,
+        favorite = Color.Unspecified,
     )
 }
 
@@ -55,6 +61,7 @@ data class ExtendedColorScheme(
     val accent1: ColorFamily,
     val accent2: ColorFamily,
     val accent3: ColorFamily,
+    val favorite: Color,
 )
 
 @Immutable
@@ -171,6 +178,7 @@ private val extendedLightScheme = ExtendedColorScheme(
         accent3ContainerLight,
         onAccent3ContainerLight,
     ),
+    favorite = favorite,
 )
 
 private val extendedDarkScheme = ExtendedColorScheme(
@@ -192,4 +200,5 @@ private val extendedDarkScheme = ExtendedColorScheme(
         accent3ContainerDark,
         onAccent3ContainerDark,
     ),
+    favorite = favorite,
 )

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="title_mood_indicative">Tryb oznajmujący</string>
+    <string name="title_mood_imperative">Tryb rozkazujący</string>
+    <string name="title_mood_conditional">Tryb warunkowy</string>
+
+    <string name="title_tense_past">Czas przyszły</string>
+    <string name="title_tense_present">Czas teraźniejszy</string>
+    <string name="title_tense_future">Czas przyszły</string>
+
+    <string name="label_number_singular">l. poj.</string>
+    <string name="label_number_plural">l. mn.</string>
+
+    <string name="label_gender_masculine">r. m.</string>
+    <string name="label_gender_masculine_personal">r. mo.</string>
+    <string name="label_gender_non_masculine_personal">r. nmo.</string>
+    <string name="label_gender_feminine">r. ż.</string>
+    <string name="label_gender_neuter">r. n.</string>
+</resources>

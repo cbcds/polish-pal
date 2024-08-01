@@ -30,7 +30,7 @@ fun App() {
     val state = viewModel.uiState.collectAsState().value
 
     if (state is AppUiState.Loaded) {
-        AppTheme(darkThemeEnabled = state.darkThemeEnabled ?: isSystemInDarkTheme()) {
+        AppTheme(darkTheme = state.darkThemeEnabled ?: isSystemInDarkTheme()) {
             TabNavigator(MainTab) {
                 AppScaffold()
             }
@@ -46,7 +46,7 @@ private fun AppScaffold() {
     CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
         Scaffold(
             content = { padding ->
-                Surface(modifier = Modifier.padding(padding)) {
+                Surface(Modifier.padding(padding)) {
                     CurrentTab()
                 }
             },

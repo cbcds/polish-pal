@@ -30,10 +30,10 @@ import com.cbcds.polishpal.core.ui.component.ElevatedCard
 import com.cbcds.polishpal.core.ui.theme.AppTheme
 import com.cbcds.polishpal.shared.app.Res
 import com.cbcds.polishpal.shared.app.hero
-import com.cbcds.polishpal.shared.app.learning_mode_conditional
-import com.cbcds.polishpal.shared.app.learning_mode_imperative
-import com.cbcds.polishpal.shared.app.learning_mode_indicative
 import com.cbcds.polishpal.shared.app.main_screen_title
+import com.cbcds.polishpal.shared.core.grammar.title_mood_conditional
+import com.cbcds.polishpal.shared.core.grammar.title_mood_imperative
+import com.cbcds.polishpal.shared.core.grammar.title_mood_indicative
 import com.cbcds.polishpal.shared.core.ui.ic_clock_fill
 import com.cbcds.polishpal.shared.core.ui.ic_message_circle_fill
 import com.cbcds.polishpal.shared.core.ui.ic_options_outline
@@ -43,6 +43,7 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
+import com.cbcds.polishpal.shared.core.grammar.Res as gramRes
 import com.cbcds.polishpal.shared.core.ui.Res as uiRes
 
 @Composable
@@ -91,25 +92,25 @@ private fun LearningModeCards(
         modifier = modifier.fillMaxWidth(),
     ) {
         LearningModeCard(
-            titleRes = Res.string.learning_mode_indicative,
+            titleRes = gramRes.string.title_mood_indicative,
             iconRes = uiRes.drawable.ic_clock_fill,
-            iconColor = AppTheme.extendedColorScheme.accent2.color,
-            iconBackgroundColor = AppTheme.extendedColorScheme.accent2.colorContainer,
+            iconColor = AppTheme.extendedColorScheme.accent1.color,
+            iconBackgroundColor = AppTheme.extendedColorScheme.accent1.colorContainer,
             showSettings = true,
             onSettingsClick = {},
             onClick = {},
         )
 
         LearningModeCard(
-            titleRes = Res.string.learning_mode_imperative,
+            titleRes = gramRes.string.title_mood_imperative,
             iconRes = uiRes.drawable.ic_message_circle_fill,
-            iconColor = AppTheme.extendedColorScheme.accent1.color,
-            iconBackgroundColor = AppTheme.extendedColorScheme.accent1.colorContainer,
+            iconColor = AppTheme.extendedColorScheme.accent2.color,
+            iconBackgroundColor = AppTheme.extendedColorScheme.accent2.colorContainer,
             onClick = {},
         )
 
         LearningModeCard(
-            titleRes = Res.string.learning_mode_conditional,
+            titleRes = gramRes.string.title_mood_conditional,
             iconRes = uiRes.drawable.ic_question_fill,
             iconColor = AppTheme.extendedColorScheme.accent3.color,
             iconBackgroundColor = AppTheme.extendedColorScheme.accent3.colorContainer,

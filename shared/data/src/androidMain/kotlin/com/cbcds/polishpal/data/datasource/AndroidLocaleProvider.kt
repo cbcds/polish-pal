@@ -3,7 +3,7 @@ package com.cbcds.polishpal.data.datasource
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import com.cbcds.polishpal.data.datasource.prefs.Preferences
-import com.cbcds.polishpal.data.model.Locale
+import com.cbcds.polishpal.data.model.settings.Locale
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.util.Locale as JavaLocale

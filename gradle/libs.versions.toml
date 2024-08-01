@@ -10,14 +10,16 @@ androidx-datastore = "1.1.1"
 androidx-espresso-core = "3.6.0"
 androidx-lifecycle = "2.8.0"
 androidx-test-junit = "1.2.0"
-compose-plugin = "1.6.11"
+compose-plugin = "1.7.0-alpha02"
 detekt = "1.23.6"
 junit = "4.13.2"
 koin = "3.2.0"
 kotlin = "1.9.0"
 kotlinx-coroutines = "1.9.0-RC"
-kotlinx-datetime = "0.4.1"
+kotlinx-datetime = "0.6.0"
 kotlin-jetbrains = "2.0.0"
+ksp = "2.0.0-1.0.24"
+room = "2.7.0-alpha06"
 voyager = "1.0.0"
 
 [libraries]
@@ -38,7 +40,11 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 
-accompanist-permissions = { module="com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
+#room-gradle-plugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
@@ -46,7 +52,7 @@ voyager-tab-navigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", 
 
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-compose = { module="io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 
 detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
@@ -59,3 +65,5 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin-jetbrains" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }

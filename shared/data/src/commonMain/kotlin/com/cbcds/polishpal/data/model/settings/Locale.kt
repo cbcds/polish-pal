@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.data.model
+package com.cbcds.polishpal.data.model.settings
 
 enum class Locale(
     val displayName: String,

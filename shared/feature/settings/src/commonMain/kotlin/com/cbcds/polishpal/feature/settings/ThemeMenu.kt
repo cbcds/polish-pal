@@ -9,7 +9,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.cbcds.polishpal.data.model.Theme
+import com.cbcds.polishpal.data.model.settings.Theme
+import com.cbcds.polishpal.shared.feature.settings.Res
+import com.cbcds.polishpal.shared.feature.settings.theme_dark
+import com.cbcds.polishpal.shared.feature.settings.theme_light
+import com.cbcds.polishpal.shared.feature.settings.theme_system
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -39,5 +44,13 @@ internal fun ThemeMenu(
                 )
             }
         }
+    }
+}
+
+private fun Theme.toStringResource(): StringResource {
+    return when (this) {
+        Theme.LIGHT -> Res.string.theme_light
+        Theme.DARK -> Res.string.theme_dark
+        Theme.SYSTEM -> Res.string.theme_system
     }
 }

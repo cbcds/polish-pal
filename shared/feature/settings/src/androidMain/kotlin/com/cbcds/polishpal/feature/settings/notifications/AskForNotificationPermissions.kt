@@ -18,7 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.cbcds.polishpal.core.ui.component.LocalSnackbarHostState
-import com.cbcds.polishpal.data.repository.PermissionsRepository
+import com.cbcds.polishpal.data.repository.settings.PermissionsRepository
 import com.cbcds.polishpal.feature.settings.R
 import com.cbcds.polishpal.shared.core.ui.Res
 import com.cbcds.polishpal.shared.core.ui.ok

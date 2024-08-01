@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.data.model
+package com.cbcds.polishpal.data.model.settings
 
 import kotlinx.datetime.LocalTime
 

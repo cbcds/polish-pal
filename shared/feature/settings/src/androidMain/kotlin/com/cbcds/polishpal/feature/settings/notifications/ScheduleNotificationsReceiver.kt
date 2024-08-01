@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.cbcds.polishpal.core.kotlin.di.IO_DISPATCHER
-import com.cbcds.polishpal.data.repository.AppSettingsRepository
+import com.cbcds.polishpal.data.repository.settings.AppSettingsRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope

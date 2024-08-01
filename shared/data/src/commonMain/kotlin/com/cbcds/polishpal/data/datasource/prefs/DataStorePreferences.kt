@@ -49,9 +49,7 @@ internal class DataStorePreferences(
     }
 
     private fun <T> readValue(key: Key<T>): Flow<T?> {
-        return dataStore.data
-            .map { prefs -> prefs[key] }
-        // .first()
+        return dataStore.data.map { prefs -> prefs[key] }
     }
 
     private fun <T> writeValue(key: Key<T>, value: T) {

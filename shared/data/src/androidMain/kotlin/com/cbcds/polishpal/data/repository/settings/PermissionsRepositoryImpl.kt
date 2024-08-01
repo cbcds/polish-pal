@@ -1,17 +1,17 @@
-package com.cbcds.polishpal.data.repository
+package com.cbcds.polishpal.data.repository.settings
 
 import com.cbcds.polishpal.data.datasource.prefs.Preferences
 import kotlinx.coroutines.flow.firstOrNull
 
-class PermissionsRepository(
+internal class PermissionsRepositoryImpl(
     private val preferences: Preferences,
-) {
+) : PermissionsRepository {
 
-    suspend fun isNotificationsPermissionRequested(): Boolean {
+    override suspend fun isNotificationsPermissionRequested(): Boolean {
         return preferences.readBoolean(KEY_NOTIFICATIONS).firstOrNull() ?: false
     }
 
-    fun setNotificationsPermissionRequested() {
+    override fun setNotificationsPermissionRequested() {
         preferences.writeBoolean(KEY_NOTIFICATIONS, true)
     }
 

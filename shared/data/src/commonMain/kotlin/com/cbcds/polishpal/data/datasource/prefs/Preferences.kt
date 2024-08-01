@@ -2,7 +2,7 @@ package com.cbcds.polishpal.data.datasource.prefs
 
 import kotlinx.coroutines.flow.Flow
 
-interface Preferences {
+internal interface Preferences {
 
     fun readBoolean(key: String): Flow<Boolean?>
 

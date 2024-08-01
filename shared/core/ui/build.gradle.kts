@@ -13,6 +13,9 @@ dependencies {
     commonMainApi(compose.components.uiToolingPreview)
 
     commonMainImplementation(compose.components.resources)
+
+    androidMainImplementation(libs.androidx.appcompat)
+    androidMainImplementation(libs.androidx.activity.compose)
 }
 
 compose.resources {

@@ -1,6 +1,6 @@
 package com.cbcds.polishpal.feature.settings.notifications
 
-import com.cbcds.polishpal.data.repository.AppSettingsRepository
+import com.cbcds.polishpal.data.repository.settings.AppSettingsRepository
 
 internal class CancelScheduledNotificationsIfDisabledUseCase(
     private val notificationScheduler: NotificationsScheduler,

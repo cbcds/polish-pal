@@ -2,9 +2,9 @@ package com.cbcds.polishpal.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cbcds.polishpal.data.model.AppSettings
-import com.cbcds.polishpal.data.model.Theme
-import com.cbcds.polishpal.data.repository.AppSettingsRepository
+import com.cbcds.polishpal.data.model.settings.AppSettings
+import com.cbcds.polishpal.data.model.settings.Theme
+import com.cbcds.polishpal.data.repository.settings.AppSettingsRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

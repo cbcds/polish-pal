@@ -99,3 +99,5 @@ val accent3Dark = Color(0xFFFFB68B)
 val onAccent3Dark = Color(0xFF522300)
 val accent3ContainerDark = Color(0xFF6F3811)
 val onAccent3ContainerDark = Color(0xFFFFDBC8)
+
+val favorite = Color(0xFFFDD70F)

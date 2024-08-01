@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="title_mood_indicative">Indicative mood</string>
+    <string name="title_mood_imperative">Imperative mood</string>
+    <string name="title_mood_conditional">Conditional mood</string>
+
+    <string name="title_tense_past">Past tense</string>
+    <string name="title_tense_present">Present tense</string>
+    <string name="title_tense_future">Future tense</string>
+
+    <string name="label_number_singular">sing.</string>
+    <string name="label_number_plural">pl.</string>
+
+    <string name="label_gender_masculine">m.</string>
+    <string name="label_gender_masculine_personal">m.\npers.</string>
+    <string name="label_gender_non_masculine_personal">non-m.\npers.</string>
+    <string name="label_gender_feminine">f.</string>
+    <string name="label_gender_neuter">n.</string>
+</resources>

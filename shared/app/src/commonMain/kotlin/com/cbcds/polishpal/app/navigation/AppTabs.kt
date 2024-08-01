@@ -1,11 +1,11 @@
 package com.cbcds.polishpal.app.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.cbcds.polishpal.core.navigation.AppTab
 import com.cbcds.polishpal.core.navigation.NestedNavigator
 import com.cbcds.polishpal.feature.settings.navigation.SettingsScreen
+import com.cbcds.polishpal.feature.vocabulary.navigation.VocabularyScreen
 import com.cbcds.polishpal.shared.app.Res
 import com.cbcds.polishpal.shared.app.nav_title_main
 import com.cbcds.polishpal.shared.app.nav_title_settings
@@ -27,7 +27,7 @@ internal data object VocabularyTab : AppTab() {
 
     @Composable
     override fun Content() {
-        Text("Vocabulary screen")
+        NestedNavigator(VocabularyScreen)
     }
 }
 
