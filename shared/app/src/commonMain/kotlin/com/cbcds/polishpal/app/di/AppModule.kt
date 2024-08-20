@@ -2,6 +2,7 @@ package com.cbcds.polishpal.app.di
 
 import com.cbcds.polishpal.app.AppViewModel
 import com.cbcds.polishpal.core.kotlin.di.dispatchersModule
+import com.cbcds.polishpal.feature.exercises.di.exercisesFeatureModule
 import com.cbcds.polishpal.feature.settings.di.settingsFeatureModule
 import com.cbcds.polishpal.feature.vocabulary.di.vocabularyFeatureModule
 import kotlinx.coroutines.CoroutineScope
@@ -14,6 +15,7 @@ fun buildCommonAppModule(globalCoroutineScope: CoroutineScope): Module {
         includes(
             dispatchersModule,
             buildCoroutineScopeModule(globalCoroutineScope),
+            exercisesFeatureModule,
             settingsFeatureModule,
             vocabularyFeatureModule,
         )

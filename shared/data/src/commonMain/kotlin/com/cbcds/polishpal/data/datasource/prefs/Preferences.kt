@@ -10,9 +10,13 @@ internal interface Preferences {
 
     fun readString(key: String): Flow<String?>
 
+    fun readStringSet(key: String): Flow<Set<String>?>
+
     fun writeBoolean(key: String, value: Boolean)
 
     fun writeInt(key: String, value: Int)
 
     fun writeString(key: String, value: String)
+
+    fun writeStringSet(key: String, value: Set<String>)
 }

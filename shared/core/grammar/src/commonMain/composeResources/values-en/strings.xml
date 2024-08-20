@@ -4,9 +4,17 @@
     <string name="title_mood_imperative">Imperative mood</string>
     <string name="title_mood_conditional">Conditional mood</string>
 
+    <string name="title_aspect">Aspect</string>
+    <string name="aspect_name_imperfective">Imperfective</string>
+    <string name="aspect_name_perfective">Perfective</string>
+
+    <string name="title_tense">Tense</string>
     <string name="title_tense_past">Past tense</string>
     <string name="title_tense_present">Present tense</string>
     <string name="title_tense_future">Future tense</string>
+    <string name="tense_name_past">Past</string>
+    <string name="tense_name_present">Present</string>
+    <string name="tense_name_future">Future</string>
 
     <string name="label_number_singular">sing.</string>
     <string name="label_number_plural">pl.</string>

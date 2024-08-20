@@ -9,6 +9,7 @@ android {
 
 dependencies {
     commonMainApi(project(":shared:feature:settings"))
+    commonMainImplementation(project(":shared:feature:exercises"))
     commonMainImplementation(project(":shared:feature:vocabulary"))
     commonMainImplementation(project(":shared:core:grammar"))
     commonMainImplementation(project(":shared:core:navigation"))

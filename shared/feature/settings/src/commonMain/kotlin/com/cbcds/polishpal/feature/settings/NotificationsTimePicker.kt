@@ -82,7 +82,7 @@ private fun NotificationsTimePicker(
             }
         },
         dismissButton = {
-            TextButton(onClick = onConfirm) {
+            TextButton(onClick = onDismiss) {
                 Text(stringResource(uiRes.string.cancel))
             }
         },

@@ -28,8 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
-import com.cbcds.polishpal.core.ui.component.LoadingIndicator
 import com.cbcds.polishpal.core.ui.theme.AppTheme
+import com.cbcds.polishpal.data.model.words.Mood
 import com.cbcds.polishpal.data.model.words.Verb
 import com.cbcds.polishpal.shared.core.ui.ok
 import com.cbcds.polishpal.shared.feature.vocabulary.Res
@@ -53,8 +53,7 @@ internal fun WordScreen(
     val navigator = LocalNavigator.current
 
     when (state) {
-        is WordUiState.Loading ->
-            LoadingIndicator(Modifier.fillMaxSize())
+        is WordUiState.Loading -> Unit
         is WordUiState.Loaded -> {
             val scrollBehavior = TopAppBarDefaults
                 .exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
@@ -83,7 +82,7 @@ internal fun WordScreen(
             if (wordInfoVisible) {
                 WordInfoDialog(
                     word = state.word,
-                    onDismissRequest = { wordInfoVisible = false }
+                    onDismiss = { wordInfoVisible = false }
                 )
             }
         }
@@ -96,7 +95,7 @@ private fun WordForms(
     modifier: Modifier = Modifier,
 ) {
     val tabsData = word.getMoodTabsData()
-    val pagerState = rememberPagerState(initialPage = 0, pageCount = { 3 })
+    val pagerState = rememberPagerState(initialPage = 0, pageCount = { Mood.entries.size })
 
     Column(
         verticalArrangement = Arrangement.Bottom,
@@ -116,10 +115,10 @@ private fun WordForms(
 @Composable
 private fun WordInfoDialog(
     word: Verb,
-    onDismissRequest: () -> Unit,
+    onDismiss: () -> Unit,
 ) {
     AlertDialog(
-        onDismissRequest = onDismissRequest,
+        onDismissRequest = onDismiss,
         title = {
             Text(
                 text = word.infinitive,
@@ -144,7 +143,7 @@ private fun WordInfoDialog(
             }
         },
         confirmButton = {
-            TextButton(onClick = onDismissRequest) {
+            TextButton(onClick = onDismiss) {
                 Text(stringResource(uiRes.string.ok))
             }
         },

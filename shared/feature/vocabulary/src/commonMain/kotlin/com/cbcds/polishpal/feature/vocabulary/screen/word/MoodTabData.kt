@@ -1,6 +1,6 @@
 package com.cbcds.polishpal.feature.vocabulary.screen.word
 
-import com.cbcds.polishpal.data.model.words.Mood
+import com.cbcds.polishpal.data.model.words.MoodForms
 import com.cbcds.polishpal.data.model.words.Verb
 import com.cbcds.polishpal.shared.feature.vocabulary.Res
 import com.cbcds.polishpal.shared.feature.vocabulary.tab_mood_conditional
@@ -10,7 +10,7 @@ import org.jetbrains.compose.resources.StringResource
 
 internal data class MoodTabData(
     val titleRes: StringResource,
-    val mood: Mood?,
+    val mood: MoodForms?,
 )
 
 internal fun Verb.getMoodTabsData(): List<MoodTabData> {

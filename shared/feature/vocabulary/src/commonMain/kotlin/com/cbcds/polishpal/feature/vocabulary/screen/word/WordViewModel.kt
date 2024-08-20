@@ -15,7 +15,7 @@ internal class WordViewModel(
     private val vocabularyRepository: VocabularyRepository,
 ) : ViewModel() {
 
-    private var _uiState = MutableStateFlow<WordUiState>(WordUiState.Loading)
+    private val _uiState = MutableStateFlow<WordUiState>(WordUiState.Loading)
     val uiState = _uiState.asStateFlow()
 
     private var updateUiStateJob: Job? = null

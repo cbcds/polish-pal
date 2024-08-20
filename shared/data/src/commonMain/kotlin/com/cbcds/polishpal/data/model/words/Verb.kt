@@ -6,7 +6,7 @@ data class Verb(
     val aspect: Aspect,
     val infinitive: String,
     val definition: String? = null,
-    val indicativeMood: Mood.Indicative? = null,
-    val imperativeMood: Mood.Imperative? = null,
-    val conditionalMood: Mood.Conditional? = null,
+    val indicativeMood: MoodForms.Indicative? = null,
+    val imperativeMood: MoodForms.Imperative? = null,
+    val conditionalMood: MoodForms.Conditional? = null,
 )

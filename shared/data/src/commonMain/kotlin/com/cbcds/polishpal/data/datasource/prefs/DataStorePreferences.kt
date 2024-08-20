@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -36,6 +37,10 @@ internal class DataStorePreferences(
         return readValue(stringPreferencesKey(key))
     }
 
+    override fun readStringSet(key: String): Flow<Set<String>?> {
+        return readValue(stringSetPreferencesKey(key))
+    }
+
     override fun writeBoolean(key: String, value: Boolean) {
         return writeValue(booleanPreferencesKey(key), value)
     }
@@ -46,6 +51,10 @@ internal class DataStorePreferences(
 
     override fun writeString(key: String, value: String) {
         writeValue(stringPreferencesKey(key), value)
+    }
+
+    override fun writeStringSet(key: String, value: Set<String>) {
+        writeValue(stringSetPreferencesKey(key), value)
     }
 
     private fun <T> readValue(key: Key<T>): Flow<T?> {

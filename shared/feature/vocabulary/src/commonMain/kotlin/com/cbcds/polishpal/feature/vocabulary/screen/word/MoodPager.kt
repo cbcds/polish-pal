@@ -12,20 +12,15 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.cbcds.polishpal.core.ui.theme.AppTheme
-import com.cbcds.polishpal.core.ui.utils.toDp
 import com.cbcds.polishpal.data.model.words.Form
-import com.cbcds.polishpal.data.model.words.Mood
+import com.cbcds.polishpal.data.model.words.MoodForms
 import com.cbcds.polishpal.shared.core.grammar.Res
 import com.cbcds.polishpal.shared.core.grammar.title_mood_conditional
 import com.cbcds.polishpal.shared.core.grammar.title_mood_imperative
@@ -33,17 +28,16 @@ import com.cbcds.polishpal.shared.core.grammar.title_mood_indicative
 import com.cbcds.polishpal.shared.core.grammar.title_tense_future
 import com.cbcds.polishpal.shared.core.grammar.title_tense_past
 import com.cbcds.polishpal.shared.core.grammar.title_tense_present
+import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
-
-private const val UNDEFINED_WIDTH = -1
 
 @Composable
 internal fun ColumnScope.MoodPager(
     pagerState: PagerState,
     tabsData: List<MoodTabData>,
 ) {
-    var minTableWidthPx by remember { mutableIntStateOf(UNDEFINED_WIDTH) }
+    val minTableWidth = LocalConfiguration.current.screenWidthDp.dp - 8.dp
 
     HorizontalPager(
         state = pagerState,
@@ -51,29 +45,21 @@ internal fun ColumnScope.MoodPager(
         userScrollEnabled = false,
         modifier = Modifier
             .weight(1f)
-            .verticalScroll(rememberScrollState())
             .padding(8.dp)
-            .onGloballyPositioned {
-                if (minTableWidthPx == UNDEFINED_WIDTH) {
-                    minTableWidthPx = it.size.width
-                }
-            },
+            .verticalScroll(rememberScrollState()),
     ) { index ->
-        if (minTableWidthPx != UNDEFINED_WIDTH) {
-            val minTableWidth = minTableWidthPx.toDp()
-            when (val mood = tabsData.getOrNull(index)?.mood) {
-                is Mood.Indicative -> IndicativeMoodForms(mood, minTableWidth)
-                is Mood.Imperative -> ImperativeMoodForms(mood, minTableWidth)
-                is Mood.Conditional -> ConditionalMoodForms(mood, minTableWidth)
-                else -> Unit
-            }
+        when (val mood = tabsData.getOrNull(index)?.mood) {
+            is MoodForms.Indicative -> IndicativeMoodForms(mood, minTableWidth)
+            is MoodForms.Imperative -> ImperativeMoodForms(mood, minTableWidth)
+            is MoodForms.Conditional -> ConditionalMoodForms(mood, minTableWidth)
+            else -> Unit
         }
     }
 }
 
 @Composable
 private fun IndicativeMoodForms(
-    mood: Mood.Indicative,
+    mood: MoodForms.Indicative,
     minTableWidth: Dp,
 ) {
     var listItemNumber = 1
@@ -81,7 +67,7 @@ private fun IndicativeMoodForms(
     @Composable
     fun TenseForms(
         titleRes: StringResource,
-        forms: List<Form>
+        forms: ImmutableList<Form>
     ) {
         TenseTitle(listItemNumber, titleRes)
         FormsTable(
@@ -111,7 +97,7 @@ private fun IndicativeMoodForms(
 
 @Composable
 private fun ImperativeMoodForms(
-    mood: Mood.Imperative,
+    mood: MoodForms.Imperative,
     minTableWidth: Dp,
 ) {
     Column {
@@ -127,7 +113,7 @@ private fun ImperativeMoodForms(
 
 @Composable
 private fun ConditionalMoodForms(
-    mood: Mood.Conditional,
+    mood: MoodForms.Conditional,
     minTableWidth: Dp,
 ) {
     Column {

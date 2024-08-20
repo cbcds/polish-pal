@@ -14,16 +14,16 @@ import org.jetbrains.compose.resources.stringResource
 
 @Suppress("CyclomaticComplexMethod")
 @Composable
-fun Form.getPronoun(): String? {
+fun Form.getPronounLabel(): String? {
     return when (person) {
         Person.FIRST -> {
             when (gender) {
                 Gender.ALL_SINGULAR,
                 Gender.MASCULINE,
-                Gender.FEMININE -> "ja${gender.toPronounSuffix()}"
+                Gender.FEMININE -> "ja${gender.toPronounLabelSuffix()}"
                 Gender.ALL_PLURAL,
                 Gender.MASCULINE_PERSONAL,
-                Gender.NON_MASCULINE_PERSONAL -> "my${gender.toPronounSuffix()}"
+                Gender.NON_MASCULINE_PERSONAL -> "my${gender.toPronounLabelSuffix()}"
                 else -> null
             }
         }
@@ -31,10 +31,10 @@ fun Form.getPronoun(): String? {
             when (gender) {
                 Gender.ALL_SINGULAR,
                 Gender.MASCULINE,
-                Gender.FEMININE -> "ty${gender.toPronounSuffix()}"
+                Gender.FEMININE -> "ty${gender.toPronounLabelSuffix()}"
                 Gender.ALL_PLURAL,
                 Gender.MASCULINE_PERSONAL,
-                Gender.NON_MASCULINE_PERSONAL -> "wy${gender.toPronounSuffix()}"
+                Gender.NON_MASCULINE_PERSONAL -> "wy${gender.toPronounLabelSuffix()}"
                 else -> null
             }
         }
@@ -53,7 +53,7 @@ fun Form.getPronoun(): String? {
 }
 
 @Composable
-fun Gender.toPronounSuffix(): String {
+fun Gender.toPronounLabelSuffix(): String {
     val resId = when (this) {
         Gender.MASCULINE -> Res.string.label_gender_masculine
         Gender.FEMININE -> Res.string.label_gender_feminine

@@ -7,6 +7,8 @@ android {
 }
 
 dependencies {
+    commonMainApi(libs.kotlinx.collections.immutable)
+
     commonMainImplementation(libs.kotlinx.coroutines)
     commonMainImplementation(libs.koin.core)
 }

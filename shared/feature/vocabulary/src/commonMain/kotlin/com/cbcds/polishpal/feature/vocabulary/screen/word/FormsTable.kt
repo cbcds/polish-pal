@@ -35,11 +35,12 @@ import com.cbcds.polishpal.core.ui.utils.measureTextWidth
 import com.cbcds.polishpal.data.model.words.Form
 import com.cbcds.polishpal.data.model.words.Gender
 import com.cbcds.polishpal.data.model.words.Number
-import com.cbcds.polishpal.feature.grammar.getPronoun
-import com.cbcds.polishpal.feature.grammar.toPronounSuffix
+import com.cbcds.polishpal.feature.grammar.getPronounLabel
+import com.cbcds.polishpal.feature.grammar.toPronounLabelSuffix
 import com.cbcds.polishpal.shared.core.grammar.Res
 import com.cbcds.polishpal.shared.core.grammar.label_number_plural
 import com.cbcds.polishpal.shared.core.grammar.label_number_singular
+import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.max
 import kotlin.math.min
@@ -52,7 +53,7 @@ private const val FORM_PADDING = 12
 @Composable
 internal fun FormsTable(
     minWidth: Dp,
-    forms: List<Form>,
+    forms: ImmutableList<Form>,
     accentColor: Color,
     onAccentColor: Color,
     modifier: Modifier = Modifier,
@@ -115,17 +116,18 @@ private fun TableHeader(
 
 @Composable
 private fun TableContent(
-    forms: List<Form>,
+    forms: ImmutableList<Form>,
     accentColor: Color,
     onAccentColor: Color,
     pronounColumnWidth: Dp,
     formColumnWidth: Dp,
 ) {
     val groupedForms by remember { mutableStateOf(forms.groupByNumber()) }
+
     val singulars = groupedForms[Number.SINGULAR].orEmpty()
     val plurals = groupedForms[Number.PLURAL].orEmpty()
-
     val rowsNum = min(singulars.size, plurals.size)
+
     Column(
         modifier = Modifier
             .padding(top = 8.dp)
@@ -159,7 +161,7 @@ private fun FormCell(
 ) {
     Row(modifier.height(IntrinsicSize.Min)) {
         Text(
-            text = form?.getPronoun().orEmpty(),
+            text = form?.getPronounLabel().orEmpty(),
             color = onAccentColor,
             textAlign = TextAlign.Center,
             style = AppTheme.typography.bodySmall,
@@ -186,7 +188,7 @@ private fun FormCell(
     }
 }
 
-private fun List<Form>.groupByNumber(): Map<Number, Array<Form?>> {
+private fun ImmutableList<Form>.groupByNumber(): Map<Number, Array<Form?>> {
     val singularSize = count { it.gender.number == Number.SINGULAR }
     val size = max(singularSize, size - singularSize)
     val singulars = arrayOfNulls<Form?>(size)
@@ -211,18 +213,25 @@ private fun List<Form>.groupByNumber(): Map<Number, Array<Form?>> {
 @Composable
 private fun getPronounColumnWidth(): Dp {
     return measureTextWidth(
-        Gender.NON_MASCULINE_PERSONAL.toPronounSuffix(),
+        Gender.NON_MASCULINE_PERSONAL.toPronounLabelSuffix(),
         AppTheme.typography.bodySmall,
     ) + (2 * PRONOUN_PADDING).dp
 }
 
 @Composable
-private fun List<Form>.getFormColumnWidth(minWidth: Dp): Dp {
+private fun ImmutableList<Form>.getFormColumnWidth(minWidth: Dp): Dp {
     var longestFormWidth = 0.dp
+
+    val maxCharNum = maxOf { forms ->
+        forms.values.maxOf { it.length }
+    }
+
     for (forms in this) {
         for (form in forms.values) {
-            val width = measureTextWidth(form, AppTheme.typography.bodyMedium)
-            longestFormWidth = max(width, longestFormWidth)
+            if (form.length in maxCharNum - 1..maxCharNum) {
+                val width = measureTextWidth(form, AppTheme.typography.bodyMedium)
+                longestFormWidth = max(width, longestFormWidth)
+            }
         }
     }
 

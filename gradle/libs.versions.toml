@@ -4,17 +4,19 @@ android-minSdk = "24"
 android-targetSdk = "34"
 accompanist = "0.34.0"
 android-gradle-plugin = "8.2.0"
-androidx-activity-compose = "1.9.0"
+androidx-activity-compose = "1.9.1"
 androidx-appcompat = "1.7.0"
 androidx-datastore = "1.1.1"
 androidx-espresso-core = "3.6.0"
 androidx-lifecycle = "2.8.0"
 androidx-test-junit = "1.2.0"
 compose-plugin = "1.7.0-alpha02"
+compose-tracing = "1.0.0-beta01"
 detekt = "1.23.6"
 junit = "4.13.2"
 koin = "3.2.0"
 kotlin = "1.9.0"
+kotlinx-collections-immutable = "0.3.7"
 kotlinx-coroutines = "1.9.0-RC"
 kotlinx-datetime = "0.6.0"
 kotlin-jetbrains = "2.0.0"
@@ -24,6 +26,7 @@ voyager = "1.0.0"
 
 [libraries]
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin-jetbrains" }
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
@@ -33,6 +36,8 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore" }
 androidx-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "androidx-lifecycle" }
 androidx-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+
+compose-tracing = { module = "androidx.compose.runtime:runtime-tracing", version.ref = "compose-tracing" }
 
 androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }

@@ -21,6 +21,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.process)
-    implementation(compose.preview)
     implementation(libs.koin.android)
+
+    debugImplementation(compose.preview)
+    debugImplementation(libs.compose.tracing)
 }

@@ -4,9 +4,17 @@
     <string name="title_mood_imperative">Tryb rozkazujący</string>
     <string name="title_mood_conditional">Tryb warunkowy</string>
 
-    <string name="title_tense_past">Czas przyszły</string>
+    <string name="title_aspect">Aspekt</string>
+    <string name="aspect_name_imperfective">Niedokonany</string>
+    <string name="aspect_name_perfective">Dokonany</string>
+
+    <string name="title_tense">Czas</string>
+    <string name="title_tense_past">Czas przeszły</string>
     <string name="title_tense_present">Czas teraźniejszy</string>
     <string name="title_tense_future">Czas przyszły</string>
+    <string name="tense_name_past">Przeszły</string>
+    <string name="tense_name_present">Teraźniejszy</string>
+    <string name="tense_name_future">Przyszły</string>
 
     <string name="label_number_singular">l. poj.</string>
     <string name="label_number_plural">l. mn.</string>

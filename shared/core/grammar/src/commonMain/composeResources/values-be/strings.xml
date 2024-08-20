@@ -4,9 +4,17 @@
     <string name="title_mood_imperative">Загадны лад</string>
     <string name="title_mood_conditional">Умоўны лад</string>
 
+    <string name="title_aspect">Трыванне</string>
+    <string name="aspect_name_imperfective">Незакончанае</string>
+    <string name="aspect_name_perfective">Закончанае</string>
+
+    <string name="title_tense">Час</string>
     <string name="title_tense_past">Мінулы час</string>
     <string name="title_tense_present">Цяперашні час</string>
     <string name="title_tense_future">Будучы час</string>
+    <string name="tense_name_past">Мінулы</string>
+    <string name="tense_name_present">Цяперашні</string>
+    <string name="tense_name_future">Будучы</string>
 
     <string name="label_number_singular">адз. л.</string>
     <string name="label_number_plural">мн. л.</string>

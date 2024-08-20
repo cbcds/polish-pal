@@ -255,6 +255,6 @@ private class RationaleSnackbarVisuals(
     override val actionLabel: String,
 ) : SnackbarVisuals {
 
-    override val duration = SnackbarDuration.Long
+    override val duration = SnackbarDuration.Indefinite
     override val withDismissAction = true
 }

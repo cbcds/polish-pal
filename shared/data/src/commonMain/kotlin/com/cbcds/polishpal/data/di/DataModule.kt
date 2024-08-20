@@ -6,6 +6,8 @@ import com.cbcds.polishpal.data.datasource.db.DatabaseProvider
 import com.cbcds.polishpal.data.datasource.db.words.VerbsDao
 import com.cbcds.polishpal.data.datasource.prefs.DataStorePreferences
 import com.cbcds.polishpal.data.datasource.prefs.Preferences
+import com.cbcds.polishpal.data.repository.exercises.ExercisesSettingsRepository
+import com.cbcds.polishpal.data.repository.exercises.ExercisesSettingsRepositoryImpl
 import com.cbcds.polishpal.data.repository.settings.AppSettingsRepository
 import com.cbcds.polishpal.data.repository.settings.AppSettingsRepositoryImpl
 import com.cbcds.polishpal.data.repository.words.FavoriteVerbsRepository
@@ -18,7 +20,6 @@ import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.binds
-import org.koin.dsl.factory
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -46,6 +47,8 @@ val dataModule = module {
     factoryOf(::FavoriteVerbsRepositoryImpl) binds arrayOf(FavoriteVerbsRepository::class)
     factoryOf(::VerbFormsRepositoryImpl) binds arrayOf(VerbFormsRepository::class)
     factoryOf(::VocabularyRepositoryImpl) binds arrayOf(VocabularyRepository::class)
+
+    factoryOf(::ExercisesSettingsRepositoryImpl) binds arrayOf(ExercisesSettingsRepository::class)
 }
 
 internal expect val nativeDataModule: Module
