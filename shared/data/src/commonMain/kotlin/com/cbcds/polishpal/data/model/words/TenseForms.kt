@@ -1,14 +1,19 @@
 package com.cbcds.polishpal.data.model.words
 
-import kotlinx.collections.immutable.ImmutableList
+import androidx.compose.runtime.Immutable
+import com.cbcds.polishpal.data.model.JavaSerializable
 
-sealed interface TenseForms {
+@Immutable
+sealed interface TenseForms : JavaSerializable {
 
-    val forms: ImmutableList<Form>
+    val forms: List<Form>
 
-    data class Past(override val forms: ImmutableList<Form>) : TenseForms
+    @Immutable
+    data class Past(override val forms: List<Form>) : TenseForms
 
-    data class Present(override val forms: ImmutableList<Form>) : TenseForms
+    @Immutable
+    data class Present(override val forms: List<Form>) : TenseForms
 
-    data class Future(override val forms: ImmutableList<Form>) : TenseForms
+    @Immutable
+    data class Future(override val forms: List<Form>) : TenseForms
 }

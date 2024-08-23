@@ -5,7 +5,6 @@ import com.cbcds.polishpal.data.model.words.Form
 import com.cbcds.polishpal.data.model.words.Gender
 import com.cbcds.polishpal.data.model.words.Person
 import com.cbcds.polishpal.data.model.words.Verb
-import kotlinx.collections.immutable.toImmutableList
 
 internal class VerbMapper {
 
@@ -35,7 +34,7 @@ internal class VerbMapper {
 
         fun String.toForm(person: Person, gender: Gender): Form {
             return Form(
-                values = split(FORMS_DELIMITER).toImmutableList(),
+                values = split(FORMS_DELIMITER),
                 person = person,
                 gender = gender,
             )

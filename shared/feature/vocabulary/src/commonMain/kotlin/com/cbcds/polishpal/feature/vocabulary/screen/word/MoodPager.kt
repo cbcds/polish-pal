@@ -29,6 +29,7 @@ import com.cbcds.polishpal.shared.core.grammar.title_tense_future
 import com.cbcds.polishpal.shared.core.grammar.title_tense_past
 import com.cbcds.polishpal.shared.core.grammar.title_tense_present
 import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -84,13 +85,13 @@ private fun IndicativeMoodForms(
         MoodTitle(Res.string.title_mood_indicative)
 
         mood.presentTense?.forms?.let { forms ->
-            TenseForms(Res.string.title_tense_present, forms)
+            TenseForms(Res.string.title_tense_present, forms.toImmutableList())
         }
         mood.pastTense?.forms?.let { forms ->
-            TenseForms(Res.string.title_tense_past, forms)
+            TenseForms(Res.string.title_tense_past, forms.toImmutableList())
         }
         mood.futureTense?.forms?.let { forms ->
-            TenseForms(Res.string.title_tense_future, forms)
+            TenseForms(Res.string.title_tense_future, forms.toImmutableList())
         }
     }
 }
@@ -103,7 +104,7 @@ private fun ImperativeMoodForms(
     Column {
         MoodTitle(Res.string.title_mood_imperative)
         FormsTable(
-            forms = mood.forms,
+            forms = mood.forms.toImmutableList(),
             accentColor = AppTheme.extendedColorScheme.accent2.colorContainer,
             onAccentColor = AppTheme.extendedColorScheme.accent2.onColorContainer,
             minWidth = minTableWidth,
@@ -119,7 +120,7 @@ private fun ConditionalMoodForms(
     Column {
         MoodTitle(Res.string.title_mood_conditional)
         FormsTable(
-            forms = mood.forms,
+            forms = mood.forms.toImmutableList(),
             accentColor = AppTheme.extendedColorScheme.accent3.colorContainer,
             onAccentColor = AppTheme.extendedColorScheme.accent3.onColorContainer,
             minWidth = minTableWidth,

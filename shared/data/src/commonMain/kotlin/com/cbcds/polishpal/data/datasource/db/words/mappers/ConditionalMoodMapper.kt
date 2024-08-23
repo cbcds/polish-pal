@@ -6,7 +6,6 @@ import com.cbcds.polishpal.data.model.words.MoodForms
 import com.cbcds.polishpal.data.model.words.Number
 import com.cbcds.polishpal.data.model.words.Person
 import com.cbcds.polishpal.data.model.words.TenseForms
-import kotlinx.collections.immutable.toImmutableList
 
 internal class ConditionalMoodMapper {
 
@@ -14,7 +13,7 @@ internal class ConditionalMoodMapper {
         val pastTenseForms = pastTense.forms
         val forms = pastTenseForms.mapNotNull { form ->
             pastTenseToConditionalMood(pastTenseForms, form.gender, form.person)
-        }.toImmutableList()
+        }
 
         return MoodForms.Conditional(forms)
     }
@@ -47,7 +46,7 @@ internal class ConditionalMoodMapper {
         }
 
         return Form(
-            values = base.map { "$it$ending" }.toImmutableList(),
+            values = base.map { "$it$ending" },
             person = person,
             gender = gender,
         )

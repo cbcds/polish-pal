@@ -15,6 +15,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 internal fun AllWordsScreen(viewModel: AllWordsViewModel = koinViewModel()) {
     val state = viewModel.uiState.collectAsState().value
+    val effect = viewModel.uiEffect.collectAsState().value
 
     Column {
         WordSearchBar(
@@ -36,17 +37,23 @@ internal fun AllWordsScreen(viewModel: AllWordsViewModel = koinViewModel()) {
         )
 
         when (state) {
-            is AllWordsUiState.Loading -> {
+            is AllWordsUiState.Loading ->
                 LoadingIndicator(Modifier.fillMaxSize())
-            }
             is AllWordsUiState.Loaded -> {
-                val navigator = LocalNavigator.current
                 WordsList(
                     words = state.words,
-                    onWordClick = { verb -> navigator?.push(WordScreen(verb.id)) },
+                    onWordClick = { viewModel.onWordClick(it.id) },
                     modifier = Modifier.padding(top = 8.dp),
                 )
             }
         }
+    }
+
+    when (effect) {
+        is AllWordsUiEffect.NavigateToWordScreen -> {
+            LocalNavigator.current?.push(WordScreen(effect.word))
+            viewModel.onNavigatedToWordScreen()
+        }
+        null -> Unit
     }
 }

@@ -8,11 +8,6 @@ import com.cbcds.polishpal.data.model.words.Gender
 import com.cbcds.polishpal.data.model.words.MoodForms
 import com.cbcds.polishpal.data.model.words.Person
 import com.cbcds.polishpal.data.model.words.TenseForms
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
-import kotlinx.collections.immutable.plus
-import kotlinx.collections.immutable.toImmutableList
-import kotlinx.collections.immutable.toPersistentList
 
 internal class IndicativeMoodMapper {
 
@@ -29,7 +24,7 @@ internal class IndicativeMoodMapper {
     }
 
     private fun VerbEntity.getPastTense(): TenseForms.Past {
-        val forms = persistentListOf(
+        val forms = listOf(
             ozn_przesz_lp_1os_rm.toForm(Person.FIRST, Gender.MASCULINE),
             ozn_przesz_lp_1os_rz.toForm(Person.FIRST, Gender.FEMININE),
             ozn_przesz_lp_2os_rm.toForm(Person.SECOND, Gender.MASCULINE),
@@ -62,8 +57,8 @@ internal class IndicativeMoodMapper {
         }
     }
 
-    private fun VerbEntity.getPresentOrFutureFormsForPerfectiveAspect(): ImmutableList<Form> {
-        return persistentListOf(
+    private fun VerbEntity.getPresentOrFutureFormsForPerfectiveAspect(): List<Form> {
+        return listOf(
             ozn_trz_przy_lp_1os.toForm(Person.FIRST, Gender.ALL_SINGULAR),
             ozn_trz_przy_lp_2os.toForm(Person.SECOND, Gender.ALL_SINGULAR),
             ozn_trz_przy_lp_3os.toForm(Person.THIRD, Gender.ALL_SINGULAR),
@@ -75,11 +70,11 @@ internal class IndicativeMoodMapper {
 
     private fun VerbEntity.getFutureFormsForImperfectiveAspect(
         pastTense: TenseForms.Past
-    ): ImmutableList<Form> {
+    ): List<Form> {
         val pastTenseForms = pastTense.forms
         val forms = pastTenseForms.mapNotNull { form ->
             pastToFutureTense(infinitive, pastTenseForms, form.gender, form.person)
-        }.toImmutableList()
+        }
 
         return forms
     }
@@ -100,7 +95,7 @@ internal class IndicativeMoodMapper {
             ?.values
             ?: return null
 
-        val forms = verbForms.map { "$beForm $it" }.toPersistentList() +
+        val forms = verbForms.map { "$beForm $it" } +
             "$beForm $infinitive"
 
         return Form(

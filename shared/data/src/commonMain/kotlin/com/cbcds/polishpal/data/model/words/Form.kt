@@ -1,9 +1,11 @@
 package com.cbcds.polishpal.data.model.words
 
-import kotlinx.collections.immutable.ImmutableList
+import androidx.compose.runtime.Immutable
+import com.cbcds.polishpal.data.model.JavaSerializable
 
+@Immutable
 data class Form(
-    val values: ImmutableList<String>,
+    val values: List<String>,
     val person: Person,
     val gender: Gender,
-)
+) : JavaSerializable

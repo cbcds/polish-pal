@@ -24,8 +24,8 @@ internal class SettingsViewModel(
         .map { it.toUiState() }
         .stateIn(viewModelScope, SharingStarted.Eagerly, SettingsUiState.Idle)
 
-    private val _effect = MutableStateFlow<SettingsUiEffect?>(null)
-    val uiEffect: StateFlow<SettingsUiEffect?> = _effect.asStateFlow()
+    private val _uiEffect = MutableStateFlow<SettingsUiEffect?>(null)
+    val uiEffect: StateFlow<SettingsUiEffect?> = _uiEffect.asStateFlow()
 
     fun setTheme(theme: Theme) {
         settingsRepository.setTheme(theme)
@@ -37,14 +37,14 @@ internal class SettingsViewModel(
 
     fun onNotificationsEnabledChange(enabled: Boolean) {
         if (enabled) {
-            _effect.value = SettingsUiEffect.AskForNotificationsPermission
+            _uiEffect.value = SettingsUiEffect.AskForNotificationsPermission
         } else {
             disableNotifications()
         }
     }
 
     fun onNotificationPermissionsGrantedChange(granted: Boolean) {
-        _effect.value = null
+        _uiEffect.value = null
         getNotificationsTime()?.takeIf { granted }
             ?.let { notificationsTime -> enableNotifications(notificationsTime) }
             ?: disableNotifications()

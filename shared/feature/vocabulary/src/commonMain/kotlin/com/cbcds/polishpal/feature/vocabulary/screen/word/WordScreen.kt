@@ -18,7 +18,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,55 +36,47 @@ import com.cbcds.polishpal.shared.feature.vocabulary.reading
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 import com.cbcds.polishpal.shared.core.ui.Res as uiRes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun WordScreen(
-    verbId: Int,
-    viewModel: WordViewModel = koinViewModel()
+    verb: Verb,
+    viewModel: WordViewModel = koinViewModel(parameters = { parametersOf(verb) }),
 ) {
-    LaunchedEffect(verbId) {
-        viewModel.setCurrentVerbId(verbId)
-    }
-
     val state = viewModel.uiState.collectAsState().value
     val navigator = LocalNavigator.current
 
-    when (state) {
-        is WordUiState.Loading -> Unit
-        is WordUiState.Loaded -> {
-            val scrollBehavior = TopAppBarDefaults
-                .exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-            var wordInfoVisible by remember { mutableStateOf(false) }
+    val scrollBehavior = TopAppBarDefaults
+        .exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    var showWordInfo by remember { mutableStateOf(false) }
 
-            Scaffold(
-                topBar = {
-                    WordTopAppBar(
-                        word = state.word,
-                        onInfoClick = { wordInfoVisible = true },
-                        onFavoriteClick = viewModel::onFavoriteClick,
-                        onBackClick = { navigator?.pop() },
-                        scrollBehavior = scrollBehavior,
-                    )
-                },
-                content = { padding ->
-                    WordForms(
-                        word = state.word,
-                        modifier = Modifier.padding(padding),
-                    )
-                },
-                contentWindowInsets = WindowInsets(0.dp),
-                modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    Scaffold(
+        topBar = {
+            WordTopAppBar(
+                word = state.word,
+                onInfoClick = { showWordInfo = true },
+                onFavoriteClick = viewModel::onFavoriteClick,
+                onBackClick = { navigator?.pop() },
+                scrollBehavior = scrollBehavior,
             )
+        },
+        content = { padding ->
+            WordForms(
+                word = state.word,
+                modifier = Modifier.padding(padding),
+            )
+        },
+        contentWindowInsets = WindowInsets(0.dp),
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    )
 
-            if (wordInfoVisible) {
-                WordInfoDialog(
-                    word = state.word,
-                    onDismiss = { wordInfoVisible = false }
-                )
-            }
-        }
+    if (showWordInfo) {
+        WordInfoDialog(
+            word = state.word,
+            onDismiss = { showWordInfo = false }
+        )
     }
 }
 

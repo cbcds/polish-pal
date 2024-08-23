@@ -11,6 +11,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 internal class AllWordsViewModel(
@@ -19,6 +20,9 @@ internal class AllWordsViewModel(
 
     private val _uiState = MutableStateFlow<AllWordsUiState>(AllWordsUiState.Loading)
     val uiState: StateFlow<AllWordsUiState> = _uiState.asStateFlow()
+
+    private val _uiEffect = MutableStateFlow<AllWordsUiEffect?>(null)
+    val uiEffect: StateFlow<AllWordsUiEffect?> = _uiEffect.asStateFlow()
 
     var query: String by mutableStateOf("")
         private set
@@ -46,6 +50,18 @@ internal class AllWordsViewModel(
     fun onAspectChange(aspect: Aspect?) {
         this.aspect = aspect
         loadVerbs()
+    }
+
+    fun onWordClick(verbId: Int) {
+        viewModelScope.launch {
+            vocabularyRepository.getVerb(verbId).firstOrNull()?.let {
+                _uiEffect.value = AllWordsUiEffect.NavigateToWordScreen(it)
+            }
+        }
+    }
+
+    fun onNavigatedToWordScreen() {
+        _uiEffect.value = null
     }
 
     private fun loadVerbs() {
