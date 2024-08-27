@@ -18,16 +18,15 @@ fun ElevatedCard(
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .shadow(
                 elevation = 8.dp,
                 ambientColor = Color.Transparent,
-                spotColor = AppTheme.colorScheme.outlineVariant,
+                spotColor = AppTheme.extendedColorScheme.shadow,
                 shape = RoundedCornerShape(16.dp),
             )
             .clip(RoundedCornerShape(16.dp))
-            .background(AppTheme.colorScheme.surfaceContainerLowest)
-            .then(modifier),
+            .background(AppTheme.colorScheme.surfaceContainerLowest),
         content = content,
     )
 }

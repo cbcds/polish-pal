@@ -20,7 +20,7 @@ class DetektConventionPlugin : Plugin<Project> {
             setSource(target.projectDir)
             include("**/*.kt", "**/*.kts")
             // TODO delete iosMain
-            exclude("**/resources/**", "**/build/**", "**/iosMain/**")
+            exclude("**/resources/**", "**/build/**", "**/iosMain/**", "**/*Dao.kt")
             config.setFrom(project.file("detekt.yml"))
 
             reports {

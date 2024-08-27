@@ -12,10 +12,9 @@ import androidx.compose.ui.unit.dp
 import com.cbcds.polishpal.core.ui.component.TopAppBar
 import com.cbcds.polishpal.core.ui.theme.AppTheme
 import com.cbcds.polishpal.data.model.words.Verb
+import com.cbcds.polishpal.feature.grammar.component.FavoriteIcon
 import com.cbcds.polishpal.shared.core.ui.Res
 import com.cbcds.polishpal.shared.core.ui.ic_info_outline
-import com.cbcds.polishpal.shared.core.ui.ic_star_fill
-import com.cbcds.polishpal.shared.core.ui.ic_star_otline
 import org.jetbrains.compose.resources.vectorResource
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,21 +44,7 @@ internal fun WordTopAppBar(
                 )
             }
             IconButton(onClick = onFavoriteClick) {
-                if (word.favorite) {
-                    Icon(
-                        imageVector = vectorResource(Res.drawable.ic_star_fill),
-                        tint = AppTheme.extendedColorScheme.favorite,
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp),
-                    )
-                } else {
-                    Icon(
-                        imageVector = vectorResource(Res.drawable.ic_star_otline),
-                        tint = AppTheme.colorScheme.outline,
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp),
-                    )
-                }
+                FavoriteIcon(favorite = word.favorite)
             }
         },
         scrollBehavior = scrollBehavior,

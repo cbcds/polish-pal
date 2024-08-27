@@ -2,4 +2,5 @@
 <resources>
     <string name="number_of_words">Ilość słów</string>
     <string name="start">Zacząć!</string>
+    <string name="quit_dialog">Are you sure you want to finish exercise?</string>
 </resources>

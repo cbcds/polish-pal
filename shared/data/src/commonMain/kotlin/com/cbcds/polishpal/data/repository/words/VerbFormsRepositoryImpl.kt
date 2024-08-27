@@ -4,17 +4,22 @@ import com.cbcds.polishpal.data.datasource.db.words.VerbEntity
 import com.cbcds.polishpal.data.datasource.db.words.VerbsDao
 import com.cbcds.polishpal.data.datasource.db.words.mappers.VerbMapper
 import com.cbcds.polishpal.data.model.words.Verb
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 
 internal class VerbFormsRepositoryImpl(
     private val verbsDao: VerbsDao,
+    private val defaultDispatcher: CoroutineDispatcher,
 ) : VerbFormsRepository {
 
     private val verbMapper = VerbMapper()
 
     override fun getVerb(id: Int): Flow<Verb?> {
-        return verbsDao.getVerbAndIsFavorite(id).map { it.toVerb() }
+        return verbsDao.getVerbAndIsFavorite(id)
+            .map { it.toVerb() }
+            .flowOn(defaultDispatcher)
     }
 
     private fun Map<VerbEntity, Boolean>.toVerb(): Verb? {

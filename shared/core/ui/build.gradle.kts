@@ -10,7 +10,6 @@ android {
 dependencies {
     commonMainApi(compose.foundation)
     commonMainApi(compose.material3)
-    commonMainApi(compose.components.uiToolingPreview)
 
     commonMainImplementation(compose.components.resources)
 

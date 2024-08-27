@@ -8,9 +8,9 @@ android {
 }
 
 dependencies {
-    commonMainImplementation(project(":shared:core:grammar"))
     commonMainImplementation(project(":shared:core:navigation"))
     commonMainImplementation(project(":shared:core:ui"))
+    commonMainImplementation(project(":shared:core:ui:grammar"))
     commonMainImplementation(project(":shared:data"))
 
     commonMainImplementation(compose.components.resources)

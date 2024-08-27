@@ -1,20 +1,13 @@
 package com.cbcds.polishpal.feature.vocabulary.screen.word
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -27,17 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
-import com.cbcds.polishpal.core.ui.theme.AppTheme
 import com.cbcds.polishpal.data.model.words.Mood
 import com.cbcds.polishpal.data.model.words.Verb
-import com.cbcds.polishpal.shared.core.ui.ok
+import com.cbcds.polishpal.feature.grammar.component.WordInfoDialog
 import com.cbcds.polishpal.shared.feature.vocabulary.Res
 import com.cbcds.polishpal.shared.feature.vocabulary.reading
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import com.cbcds.polishpal.shared.core.ui.Res as uiRes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,14 +35,14 @@ internal fun WordScreen(
     viewModel: WordViewModel = koinViewModel(parameters = { parametersOf(verb) }),
 ) {
     val state = viewModel.uiState.collectAsState().value
-    val navigator = LocalNavigator.current
+    var showWordInfo by remember { mutableStateOf(false) }
 
     val scrollBehavior = TopAppBarDefaults
         .exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
-    var showWordInfo by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
+            val navigator = LocalNavigator.current
             WordTopAppBar(
                 word = state.word,
                 onInfoClick = { showWordInfo = true },
@@ -75,6 +64,7 @@ internal fun WordScreen(
     if (showWordInfo) {
         WordInfoDialog(
             word = state.word,
+            imageRes = Res.drawable.reading,
             onDismiss = { showWordInfo = false }
         )
     }
@@ -101,43 +91,4 @@ private fun WordForms(
             pagerState = pagerState,
         )
     }
-}
-
-@Composable
-private fun WordInfoDialog(
-    word: Verb,
-    onDismiss: () -> Unit,
-) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = {
-            Text(
-                text = word.infinitive,
-                style = AppTheme.typography.titleLarge,
-            )
-        },
-        text = {
-            Column {
-                SelectionContainer {
-                    Text(
-                        text = word.definition.orEmpty(),
-                        style = AppTheme.typography.bodyMedium,
-                    )
-                }
-                Image(
-                    painter = painterResource(Res.drawable.reading),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .offset(x = (-24).dp, y = 20.dp)
-                        .height(132.dp),
-                )
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(uiRes.string.ok))
-            }
-        },
-        dismissButton = null,
-    )
 }

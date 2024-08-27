@@ -3,7 +3,7 @@ package com.cbcds.polishpal.feature.vocabulary.screen.word
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cbcds.polishpal.data.model.words.Verb
-import com.cbcds.polishpal.data.repository.words.VocabularyRepository
+import com.cbcds.polishpal.data.repository.vocabulary.VocabularyRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

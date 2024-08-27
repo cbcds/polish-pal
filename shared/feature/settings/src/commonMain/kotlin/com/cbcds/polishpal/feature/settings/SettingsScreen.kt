@@ -118,7 +118,7 @@ private fun GeneralSettings(
     notificationsTime: LocalTime,
     onNotificationsTimeChange: (LocalTime) -> Unit,
 ) {
-    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
+    ElevatedCard(Modifier.fillMaxWidth()) {
         SettingsItem(
             iconRes = uiRes.drawable.ic_sun_outline,
             titleRes = Res.string.setting_theme,

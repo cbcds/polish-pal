@@ -12,4 +12,6 @@ dependencies {
     commonMainImplementation(compose.foundation)
     commonMainImplementation(compose.components.resources)
     commonMainImplementation(libs.voyager.screenmodel)
+
+    androidMainImplementation(libs.androidx.activity.compose)
 }

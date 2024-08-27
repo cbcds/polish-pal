@@ -52,7 +52,10 @@ val LocalExtendedColorScheme = staticCompositionLocalOf {
         accent1 = ColorFamily.Unspecified,
         accent2 = ColorFamily.Unspecified,
         accent3 = ColorFamily.Unspecified,
+        shadow = Color.Unspecified,
         favorite = Color.Unspecified,
+        correct = Color.Unspecified,
+        semiCorrect = Color.Unspecified,
     )
 }
 
@@ -61,7 +64,10 @@ data class ExtendedColorScheme(
     val accent1: ColorFamily,
     val accent2: ColorFamily,
     val accent3: ColorFamily,
+    val shadow: Color,
     val favorite: Color,
+    val correct: Color,
+    val semiCorrect: Color,
 )
 
 @Immutable
@@ -178,7 +184,10 @@ private val extendedLightScheme = ExtendedColorScheme(
         accent3ContainerLight,
         onAccent3ContainerLight,
     ),
-    favorite = favorite,
+    shadow = shadowLight,
+    favorite = favoriteLight,
+    correct = correctLight,
+    semiCorrect = semiCorrect,
 )
 
 private val extendedDarkScheme = ExtendedColorScheme(
@@ -200,5 +209,8 @@ private val extendedDarkScheme = ExtendedColorScheme(
         accent3ContainerDark,
         onAccent3ContainerDark,
     ),
-    favorite = favorite,
+    shadow = shadowDark,
+    favorite = favoriteDark,
+    correct = correctDark,
+    semiCorrect = semiCorrect,
 )

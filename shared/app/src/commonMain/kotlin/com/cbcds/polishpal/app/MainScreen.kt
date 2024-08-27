@@ -31,7 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.cbcds.polishpal.core.ui.component.ElevatedCard
 import com.cbcds.polishpal.core.ui.theme.AppTheme
-import com.cbcds.polishpal.data.model.exercises.ExerciseType
+import com.cbcds.polishpal.data.model.exercises.ExerciseGroupType
 import com.cbcds.polishpal.feature.exercises.screen.start.StartExerciseDialog
 import com.cbcds.polishpal.shared.app.Res
 import com.cbcds.polishpal.shared.app.hero
@@ -52,7 +52,7 @@ import com.cbcds.polishpal.shared.core.ui.Res as uiRes
 
 @Composable
 internal fun MainScreen() {
-    var selectedExerciseType by rememberSaveable { mutableStateOf<ExerciseType?>(null) }
+    var selectedExerciseGroupType by rememberSaveable { mutableStateOf<ExerciseGroupType?>(null) }
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -61,17 +61,17 @@ internal fun MainScreen() {
         Header(Modifier.weight(1f))
         Spacer(Modifier.height(28.dp))
         LearningModeCards(
-            onExerciseClick = { selectedExerciseType = it },
+            onExerciseClick = { selectedExerciseGroupType = it },
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
                 .weight(2f),
         )
     }
 
-    selectedExerciseType?.let { exerciseType ->
+    selectedExerciseGroupType?.let { exerciseType ->
         StartExerciseDialog(
-            exerciseType = exerciseType,
-            onDismiss = { selectedExerciseType = null },
+            exerciseGroupType = exerciseType,
+            onDismiss = { selectedExerciseGroupType = null },
         )
     }
 }
@@ -99,7 +99,7 @@ private fun Header(
 
 @Composable
 private fun LearningModeCards(
-    onExerciseClick: (ExerciseType) -> Unit,
+    onExerciseClick: (ExerciseGroupType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -111,7 +111,7 @@ private fun LearningModeCards(
             iconRes = uiRes.drawable.ic_clock_fill,
             iconColor = AppTheme.extendedColorScheme.accent1.color,
             iconBackgroundColor = AppTheme.extendedColorScheme.accent1.colorContainer,
-            onClick = { onExerciseClick(ExerciseType.INDICATIVE_MOOD) },
+            onClick = { onExerciseClick(ExerciseGroupType.INDICATIVE_MOOD) },
         )
 
         LearningModeCard(
@@ -119,7 +119,7 @@ private fun LearningModeCards(
             iconRes = uiRes.drawable.ic_message_circle_fill,
             iconColor = AppTheme.extendedColorScheme.accent2.color,
             iconBackgroundColor = AppTheme.extendedColorScheme.accent2.colorContainer,
-            onClick = { onExerciseClick(ExerciseType.IMPERATIVE_MOOD) },
+            onClick = { onExerciseClick(ExerciseGroupType.IMPERATIVE_MOOD) },
         )
 
         LearningModeCard(
@@ -127,7 +127,7 @@ private fun LearningModeCards(
             iconRes = uiRes.drawable.ic_question_fill,
             iconColor = AppTheme.extendedColorScheme.accent3.color,
             iconBackgroundColor = AppTheme.extendedColorScheme.accent3.colorContainer,
-            onClick = { onExerciseClick(ExerciseType.CONDITIONAL_MOOD) },
+            onClick = { onExerciseClick(ExerciseGroupType.CONDITIONAL_MOOD) },
         )
     }
 }

@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.cbcds.polishpal.core.ui.animation.ShakeAnimation
 import com.cbcds.polishpal.core.ui.theme.AppTheme
-import com.cbcds.polishpal.core.ui.utils.roundToPx
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 

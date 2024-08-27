@@ -20,10 +20,10 @@ private const val LINK = "https://www.youtube.com/watch?v=$ID"
 @Composable
 internal fun AboutAppScreen() {
     val linkHandler = rememberYoutubeLinkHandler()
-    val navigator = LocalNavigator.current
 
     Scaffold(
         topBar = {
+            val navigator = LocalNavigator.current
             TopAppBar(
                 onBackClick = { navigator?.pop() }
             )

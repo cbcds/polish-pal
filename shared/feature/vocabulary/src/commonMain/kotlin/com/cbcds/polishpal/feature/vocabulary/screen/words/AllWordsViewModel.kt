@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cbcds.polishpal.data.model.words.Aspect
-import com.cbcds.polishpal.data.repository.words.VocabularyRepository
+import com.cbcds.polishpal.data.repository.vocabulary.VocabularyRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

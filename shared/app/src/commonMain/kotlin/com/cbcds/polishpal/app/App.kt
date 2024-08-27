@@ -1,11 +1,11 @@
 package com.cbcds.polishpal.app
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
@@ -19,10 +19,8 @@ import com.cbcds.polishpal.app.navigation.MainTab
 import com.cbcds.polishpal.core.navigation.rememberCurrentScreen
 import com.cbcds.polishpal.core.ui.component.LocalSnackbarHostState
 import com.cbcds.polishpal.core.ui.theme.AppTheme
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
 
-@Preview
 @Composable
 fun App() {
     val viewModel = koinViewModel<AppViewModel>()
@@ -46,7 +44,7 @@ private fun AppScaffold() {
     CompositionLocalProvider(LocalSnackbarHostState provides snackbarHostState) {
         Scaffold(
             content = { padding ->
-                Surface(Modifier.padding(padding)) {
+                Box(Modifier.padding(padding)) {
                     CurrentTab()
                 }
             },

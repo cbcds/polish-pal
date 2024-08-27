@@ -33,10 +33,9 @@ import androidx.compose.ui.unit.times
 import com.cbcds.polishpal.core.ui.theme.AppTheme
 import com.cbcds.polishpal.core.ui.utils.measureTextWidth
 import com.cbcds.polishpal.data.model.words.Form
-import com.cbcds.polishpal.data.model.words.Gender
 import com.cbcds.polishpal.data.model.words.Number
+import com.cbcds.polishpal.feature.grammar.getMaxPronounLabelWidth
 import com.cbcds.polishpal.feature.grammar.getPronounLabel
-import com.cbcds.polishpal.feature.grammar.toPronounLabelSuffix
 import com.cbcds.polishpal.shared.core.grammar.Res
 import com.cbcds.polishpal.shared.core.grammar.label_number_plural
 import com.cbcds.polishpal.shared.core.grammar.label_number_singular
@@ -47,8 +46,8 @@ import kotlin.math.min
 
 private const val FORMS_DELIMITER = "\n"
 
-private const val PRONOUN_PADDING = 4
-private const val FORM_PADDING = 12
+private const val PRONOUN_HORIZONTAL_PADDING = 4
+private const val FORM_HORIZONTAL_PADDING = 12
 
 @Composable
 internal fun FormsTable(
@@ -134,13 +133,13 @@ private fun TableContent(
             .clip(RoundedCornerShape(16.dp)),
     ) {
         for (i in 0 until rowsNum) {
-            Row(modifier = Modifier.height(IntrinsicSize.Min)) {
+            Row(Modifier.height(IntrinsicSize.Min)) {
                 listOf(singulars[i], plurals[i]).forEach { form ->
-                    FormCell(
+                    FormRow(
                         form = form,
                         accentColor = accentColor,
                         onAccentColor = onAccentColor,
-                        pronounWidth = pronounColumnWidth,
+                        pronounColumnWidth = pronounColumnWidth,
                         formWidth = formColumnWidth,
                         modifier = Modifier.fillMaxHeight(),
                     )
@@ -151,11 +150,11 @@ private fun TableContent(
 }
 
 @Composable
-private fun FormCell(
+private fun FormRow(
     form: Form?,
     accentColor: Color,
     onAccentColor: Color,
-    pronounWidth: Dp,
+    pronounColumnWidth: Dp,
     formWidth: Dp,
     modifier: Modifier = Modifier,
 ) {
@@ -167,8 +166,8 @@ private fun FormCell(
             style = AppTheme.typography.bodySmall,
             modifier = Modifier
                 .background(accentColor)
-                .width(pronounWidth)
-                .padding(horizontal = PRONOUN_PADDING.dp, vertical = 6.dp)
+                .width(pronounColumnWidth)
+                .padding(horizontal = PRONOUN_HORIZONTAL_PADDING.dp, vertical = 6.dp)
                 .fillMaxHeight(),
         )
         Box(
@@ -176,7 +175,7 @@ private fun FormCell(
             modifier = Modifier
                 .background(AppTheme.colorScheme.surfaceContainerLowest)
                 .width(formWidth)
-                .padding(horizontal = FORM_PADDING.dp, vertical = 6.dp)
+                .padding(horizontal = FORM_HORIZONTAL_PADDING.dp, vertical = 6.dp)
                 .fillMaxHeight(),
         ) {
             Text(
@@ -212,10 +211,7 @@ private fun ImmutableList<Form>.groupByNumber(): Map<Number, Array<Form?>> {
 
 @Composable
 private fun getPronounColumnWidth(): Dp {
-    return measureTextWidth(
-        Gender.NON_MASCULINE_PERSONAL.toPronounLabelSuffix(),
-        AppTheme.typography.bodySmall,
-    ) + (2 * PRONOUN_PADDING).dp
+    return getMaxPronounLabelWidth() + (2 * PRONOUN_HORIZONTAL_PADDING).dp
 }
 
 @Composable
@@ -235,7 +231,7 @@ private fun ImmutableList<Form>.getFormColumnWidth(minWidth: Dp): Dp {
         }
     }
 
-    return max(minWidth, longestFormWidth + (2 * FORM_PADDING).dp)
+    return max(minWidth, longestFormWidth + (2 * FORM_HORIZONTAL_PADDING).dp)
 }
 
 @Composable
