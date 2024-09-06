@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.feature.settings
+package com.cbcds.polishpal.feature.settings.screen.about
 
 import android.content.Context
 import android.content.Intent

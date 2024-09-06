@@ -11,4 +11,6 @@
     <string name="tab_mood_indicative">Tryb ozn.</string>
     <string name="tab_mood_imperative">Tryb rozk.</string>
     <string name="tab_mood_conditional">Tryb war.</string>
+
+    <string name="no_forms_in_mood_exist">Czasownik nie ma form w wybranym trybie</string>
 </resources>

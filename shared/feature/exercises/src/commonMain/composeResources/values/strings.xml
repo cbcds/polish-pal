@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="number_of_words">Ilość słów</string>
-    <string name="start">Zacząć!</string>
-    <string name="quit_dialog">Are you sure you want to finish exercise?</string>
+    <string name="start">Zacznij</string>
+    <string name="quit_dialog">Czy naprawdę chcesz skończyć ćwiczenie?</string>
+
+    <string name="your_results">Twoje wyniki</string>
+    <string name="finish">Skończyć</string>
 </resources>

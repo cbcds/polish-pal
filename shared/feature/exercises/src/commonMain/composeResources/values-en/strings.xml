@@ -3,4 +3,7 @@
     <string name="number_of_words">Number of words</string>
     <string name="start">Start!</string>
     <string name="quit_dialog">Are you sure you want to finish exercise?</string>
+
+    <string name="your_results">Your results</string>
+    <string name="finish">Finish</string>
 </resources>

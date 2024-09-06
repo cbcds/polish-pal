@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.feature.settings
+package com.cbcds.polishpal.feature.settings.screen.main
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.AlertDialog
@@ -19,6 +19,9 @@ import com.cbcds.polishpal.shared.core.ui.ok
 import com.cbcds.polishpal.shared.feature.settings.Res
 import com.cbcds.polishpal.shared.feature.settings.time_picker_title
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.format
+import kotlinx.datetime.format.DateTimeFormat
+import kotlinx.datetime.format.char
 import org.jetbrains.compose.resources.stringResource
 import com.cbcds.polishpal.shared.core.ui.Res as uiRes
 
@@ -34,12 +37,12 @@ internal fun NotificationsTimePicker(
     val timePickerState = rememberTimePickerState(
         initialHour = currentNotificationsTime.hour,
         initialMinute = currentNotificationsTime.minute,
-        is24Hour = true,
     )
 
     Box {
+        val timeFormat = remember { getTimeFormat(timePickerState.is24hour) }
         SettingsDropDownHeader(
-            text = currentNotificationsTime.toString(),
+            text = currentNotificationsTime.format(timeFormat),
             enabled = enabled,
             onClick = { pickerVisible = true },
         )
@@ -87,4 +90,20 @@ private fun NotificationsTimePicker(
             }
         },
     )
+}
+
+private fun getTimeFormat(is24hour: Boolean): DateTimeFormat<LocalTime> {
+    return LocalTime.Format {
+        if (is24hour) {
+            hour()
+        } else {
+            amPmHour()
+        }
+        char(':')
+        minute()
+        if (!is24hour) {
+            char(' ')
+            amPmMarker("AM", "PM")
+        }
+    }
 }

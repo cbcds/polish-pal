@@ -2,7 +2,7 @@ package com.cbcds.polishpal.feature.settings.navigation
 
 import androidx.compose.runtime.Composable
 import com.cbcds.polishpal.core.navigation.AppScreen
-import com.cbcds.polishpal.feature.settings.AboutAppScreen
+import com.cbcds.polishpal.feature.settings.screen.about.AboutAppScreen
 
 internal object AboutAppScreen : AppScreen {
 

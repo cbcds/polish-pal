@@ -65,7 +65,7 @@ internal class ExerciseIterator(
                         exercisesOrder.add(nextVerbIndex to exerciseType)
                     }
 
-                    if (nextTenseIndex > tenses.lastIndex) {
+                    if (nextTenseIndex >= tenses.lastIndex) {
                         ++nextVerbIndex
                         nextTenseIndex = 0
                     } else {
@@ -117,7 +117,7 @@ internal class ExerciseIterator(
                     verbId = id,
                     forms = forms.toImmutableList(),
                     tense = tense,
-                    tenseNumber = allTenses.indexOf(tense).coerceAtLeast(1),
+                    tenseNumber = (allTenses.indexOf(tense) + 1).coerceAtLeast(1),
                     numberOfTenses = allTenses.size,
                 )
             )

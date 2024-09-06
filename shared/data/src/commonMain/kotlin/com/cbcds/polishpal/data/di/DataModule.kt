@@ -13,12 +13,12 @@ import com.cbcds.polishpal.data.repository.exercises.ExerciseSettingsRepository
 import com.cbcds.polishpal.data.repository.exercises.ExerciseSettingsRepositoryImpl
 import com.cbcds.polishpal.data.repository.settings.AppSettingsRepository
 import com.cbcds.polishpal.data.repository.settings.AppSettingsRepositoryImpl
+import com.cbcds.polishpal.data.repository.vocabulary.VocabularyItemRepository
+import com.cbcds.polishpal.data.repository.vocabulary.VocabularyItemRepositoryImpl
 import com.cbcds.polishpal.data.repository.vocabulary.VocabularyRepository
 import com.cbcds.polishpal.data.repository.vocabulary.VocabularyRepositoryImpl
 import com.cbcds.polishpal.data.repository.words.FavoriteVerbsRepository
 import com.cbcds.polishpal.data.repository.words.FavoriteVerbsRepositoryImpl
-import com.cbcds.polishpal.data.repository.words.InfinitiveVerbsRepository
-import com.cbcds.polishpal.data.repository.words.InfinitiveVerbsRepositoryImpl
 import com.cbcds.polishpal.data.repository.words.VerbFormsRepository
 import com.cbcds.polishpal.data.repository.words.VerbFormsRepositoryImpl
 import org.koin.core.module.Module
@@ -49,13 +49,8 @@ val dataModule = module {
     single<AppDatabase> { get<DatabaseProvider>().getDatabase() }
 
     factory<VerbsDao> { get<AppDatabase>().getVerbsDao() }
+
     factoryOf(::FavoriteVerbsRepositoryImpl) binds arrayOf(FavoriteVerbsRepository::class)
-    factory {
-        InfinitiveVerbsRepositoryImpl(
-            verbsDao = get(),
-            defaultDispatcher = get(named(DEFAULT_DISPATCHER)),
-        )
-    } binds arrayOf(InfinitiveVerbsRepository::class)
     factory {
         VerbFormsRepositoryImpl(
             verbsDao = get(),
@@ -63,14 +58,21 @@ val dataModule = module {
         )
     } binds arrayOf(VerbFormsRepository::class)
 
-    factoryOf(::VocabularyRepositoryImpl) binds arrayOf(VocabularyRepository::class)
+    factory {
+        VocabularyRepositoryImpl(
+            verbsDao = get(),
+            favoriteVerbsRepository = get(),
+            verbFormsRepository = get(),
+            defaultDispatcher = get(named(DEFAULT_DISPATCHER)),
+        )
+    } binds arrayOf(VocabularyRepository::class)
+    factoryOf(::VocabularyItemRepositoryImpl) binds arrayOf(VocabularyItemRepository::class)
 
     factoryOf(::ExerciseSettingsRepositoryImpl) binds arrayOf(ExerciseSettingsRepository::class)
     factory {
         ExerciseRepositoryImpl(
             verbsDao = get(),
             favoriteVerbsRepository = get(),
-            infinitiveVerbsRepository = get(),
             defaultDispatcher = get(named(DEFAULT_DISPATCHER)),
         )
     } binds arrayOf(ExerciseRepository::class)

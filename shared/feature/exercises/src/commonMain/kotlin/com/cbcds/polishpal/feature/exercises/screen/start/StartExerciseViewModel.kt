@@ -19,7 +19,7 @@ internal class StartExerciseViewModel(
     fun setExerciseType(exerciseGroupType: ExerciseGroupType) {
         viewModelScope.launch {
             _uiState.value = StartExerciseUiState.Loaded(
-                settingsRepository.getExerciseSettings(exerciseGroupType)
+                settingsRepository.getSettings(exerciseGroupType)
             )
         }
     }
@@ -30,6 +30,6 @@ internal class StartExerciseViewModel(
     }
 
     fun saveExerciseSettings(settings: ExerciseSettings) {
-        settingsRepository.saveExerciseSettings(settings)
+        settingsRepository.saveSettings(settings)
     }
 }

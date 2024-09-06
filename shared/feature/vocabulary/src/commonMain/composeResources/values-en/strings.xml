@@ -11,4 +11,6 @@
     <string name="tab_mood_indicative">Ind. mood</string>
     <string name="tab_mood_imperative">Imp. mood</string>
     <string name="tab_mood_conditional">Cond. mood</string>
+
+    <string name="no_forms_in_mood_exist">There are no verb forms in the selected mood</string>
 </resources>

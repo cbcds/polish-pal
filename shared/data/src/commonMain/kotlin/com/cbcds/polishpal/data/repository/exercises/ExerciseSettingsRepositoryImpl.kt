@@ -11,7 +11,7 @@ internal class ExerciseSettingsRepositoryImpl(
     private val preferences: Preferences,
 ) : ExerciseSettingsRepository {
 
-    override suspend fun getExerciseSettings(exerciseGroupType: ExerciseGroupType): ExerciseSettings {
+    override suspend fun getSettings(exerciseGroupType: ExerciseGroupType): ExerciseSettings {
         return when (exerciseGroupType) {
             ExerciseGroupType.INDICATIVE_MOOD -> getIndicativeMoodExerciseSettings()
             ExerciseGroupType.IMPERATIVE_MOOD -> getImperativeMoodExerciseSettings()
@@ -19,7 +19,7 @@ internal class ExerciseSettingsRepositoryImpl(
         }
     }
 
-    override fun saveExerciseSettings(settings: ExerciseSettings) {
+    override fun saveSettings(settings: ExerciseSettings) {
         return when (settings) {
             is ExerciseSettings.IndicativeMood -> setIndicativeMoodExerciseSettings(settings)
             is ExerciseSettings.ImperativeMood -> setImperativeMoodExerciseSettings(settings)

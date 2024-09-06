@@ -2,6 +2,7 @@ package com.cbcds.polishpal.feature.vocabulary.screen.word
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,17 +22,19 @@ import androidx.compose.ui.unit.dp
 import com.cbcds.polishpal.core.ui.theme.AppTheme
 import com.cbcds.polishpal.data.model.words.Form
 import com.cbcds.polishpal.data.model.words.MoodForms
-import com.cbcds.polishpal.shared.core.grammar.Res
 import com.cbcds.polishpal.shared.core.grammar.title_mood_conditional
 import com.cbcds.polishpal.shared.core.grammar.title_mood_imperative
 import com.cbcds.polishpal.shared.core.grammar.title_mood_indicative
 import com.cbcds.polishpal.shared.core.grammar.title_tense_future
 import com.cbcds.polishpal.shared.core.grammar.title_tense_past
 import com.cbcds.polishpal.shared.core.grammar.title_tense_present
+import com.cbcds.polishpal.shared.feature.vocabulary.Res
+import com.cbcds.polishpal.shared.feature.vocabulary.no_forms_in_mood_exist
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import com.cbcds.polishpal.shared.core.grammar.Res as gramRes
 
 @Composable
 internal fun ColumnScope.MoodPager(
@@ -44,14 +47,15 @@ internal fun ColumnScope.MoodPager(
         state = pagerState,
         verticalAlignment = Alignment.Top,
         userScrollEnabled = false,
+        contentPadding = PaddingValues(vertical = 8.dp),
         modifier = Modifier
             .weight(1f)
-            .padding(8.dp)
+            .padding(horizontal = 8.dp)
             .verticalScroll(rememberScrollState()),
     ) { index ->
         when (val mood = tabsData.getOrNull(index)?.mood) {
             is MoodForms.Indicative -> IndicativeMoodForms(mood, minTableWidth)
-            is MoodForms.Imperative -> ImperativeMoodForms(mood, minTableWidth)
+            is MoodForms.Imperative? -> ImperativeMoodForms(mood, minTableWidth)
             is MoodForms.Conditional -> ConditionalMoodForms(mood, minTableWidth)
             else -> Unit
         }
@@ -60,7 +64,7 @@ internal fun ColumnScope.MoodPager(
 
 @Composable
 private fun IndicativeMoodForms(
-    mood: MoodForms.Indicative,
+    mood: MoodForms.Indicative?,
     minTableWidth: Dp,
 ) {
     var listItemNumber = 1
@@ -82,49 +86,63 @@ private fun IndicativeMoodForms(
     }
 
     Column {
-        MoodTitle(Res.string.title_mood_indicative)
+        MoodTitle(gramRes.string.title_mood_indicative)
 
-        mood.presentTense?.forms?.let { forms ->
-            TenseForms(Res.string.title_tense_present, forms.toImmutableList())
-        }
-        mood.pastTense?.forms?.let { forms ->
-            TenseForms(Res.string.title_tense_past, forms.toImmutableList())
-        }
-        mood.futureTense?.forms?.let { forms ->
-            TenseForms(Res.string.title_tense_future, forms.toImmutableList())
+        if (mood != null) {
+            mood.presentTense?.forms?.let { forms ->
+                TenseForms(gramRes.string.title_tense_present, forms.toImmutableList())
+            }
+            mood.pastTense?.forms?.let { forms ->
+                TenseForms(gramRes.string.title_tense_past, forms.toImmutableList())
+            }
+            mood.futureTense?.forms?.let { forms ->
+                TenseForms(gramRes.string.title_tense_future, forms.toImmutableList())
+            }
+        } else {
+            NoFormsMessage()
         }
     }
 }
 
 @Composable
 private fun ImperativeMoodForms(
-    mood: MoodForms.Imperative,
+    mood: MoodForms.Imperative?,
     minTableWidth: Dp,
 ) {
     Column {
-        MoodTitle(Res.string.title_mood_imperative)
-        FormsTable(
-            forms = mood.forms.toImmutableList(),
-            accentColor = AppTheme.extendedColorScheme.accent2.colorContainer,
-            onAccentColor = AppTheme.extendedColorScheme.accent2.onColorContainer,
-            minWidth = minTableWidth,
-        )
+        MoodTitle(gramRes.string.title_mood_imperative)
+
+        if (mood != null) {
+            FormsTable(
+                forms = mood.forms.toImmutableList(),
+                accentColor = AppTheme.extendedColorScheme.accent2.colorContainer,
+                onAccentColor = AppTheme.extendedColorScheme.accent2.onColorContainer,
+                minWidth = minTableWidth,
+            )
+        } else {
+            NoFormsMessage()
+        }
     }
 }
 
 @Composable
 private fun ConditionalMoodForms(
-    mood: MoodForms.Conditional,
+    mood: MoodForms.Conditional?,
     minTableWidth: Dp,
 ) {
     Column {
-        MoodTitle(Res.string.title_mood_conditional)
-        FormsTable(
-            forms = mood.forms.toImmutableList(),
-            accentColor = AppTheme.extendedColorScheme.accent3.colorContainer,
-            onAccentColor = AppTheme.extendedColorScheme.accent3.onColorContainer,
-            minWidth = minTableWidth,
-        )
+        MoodTitle(gramRes.string.title_mood_conditional)
+
+        if (mood != null) {
+            FormsTable(
+                forms = mood.forms.toImmutableList(),
+                accentColor = AppTheme.extendedColorScheme.accent3.colorContainer,
+                onAccentColor = AppTheme.extendedColorScheme.accent3.onColorContainer,
+                minWidth = minTableWidth,
+            )
+        } else {
+            NoFormsMessage()
+        }
     }
 }
 
@@ -152,5 +170,17 @@ private fun TenseTitle(
             .fillMaxWidth()
             .padding(start = 8.dp)
             .padding(vertical = 8.dp),
+    )
+}
+
+@Composable
+private fun NoFormsMessage() {
+    Text(
+        text = stringResource(Res.string.no_forms_in_mood_exist),
+        style = AppTheme.typography.bodyMedium,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(12.dp),
     )
 }

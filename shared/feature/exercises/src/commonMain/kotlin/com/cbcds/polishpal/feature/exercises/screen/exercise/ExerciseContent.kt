@@ -48,7 +48,8 @@ internal fun ExerciseContent(
                 .padding(horizontal = 20.dp),
         ) {
             val groupedForms = when (exercise) {
-                is Exercise.IndicativeMood -> {
+                is Exercise.IndicativeMood,
+                is Exercise.ConditionalMood -> {
                     val (singular, plural) = exercise.forms.partition {
                         it.gender.number == Number.SINGULAR
                     }

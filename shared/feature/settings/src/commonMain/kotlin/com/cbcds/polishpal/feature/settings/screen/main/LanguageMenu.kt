@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.feature.settings
+package com.cbcds.polishpal.feature.settings.screen.main
 
 import androidx.compose.runtime.Composable
 import com.cbcds.polishpal.data.model.settings.Locale

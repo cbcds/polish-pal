@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.feature.settings
+package com.cbcds.polishpal.feature.settings.screen.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -60,11 +60,11 @@ internal fun SettingsScreen(viewModel: SettingsViewModel = koinViewModel()) {
     val state = viewModel.uiState.collectAsState().value
     val effect = viewModel.uiEffect.collectAsState().value
 
-    val appActionsHandler = rememberAppActionsHandler()
     val navigator = LocalNavigator.current
 
     if (state is SettingsUiState.Loaded) {
         val settings = state.settings
+        val appActionsHandler = rememberAppActionsHandler(state.appInfo)
 
         Column(Modifier.verticalScroll(rememberScrollState())) {
             Image(

@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.feature.settings
+package com.cbcds.polishpal.feature.settings.screen.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,6 +6,7 @@ import com.cbcds.polishpal.data.model.settings.AppSettings
 import com.cbcds.polishpal.data.model.settings.Locale
 import com.cbcds.polishpal.data.model.settings.Theme
 import com.cbcds.polishpal.data.repository.settings.AppSettingsRepository
+import com.cbcds.polishpal.feature.settings.model.AppInfo
 import com.cbcds.polishpal.feature.settings.notifications.NotificationsScheduler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -17,6 +18,7 @@ import kotlinx.datetime.LocalTime
 
 internal class SettingsViewModel(
     private val settingsRepository: AppSettingsRepository,
+    private val appInfo: AppInfo,
     private val notificationsScheduler: NotificationsScheduler,
 ) : ViewModel() {
 
@@ -71,6 +73,12 @@ internal class SettingsViewModel(
     }
 
     private fun AppSettings?.toUiState(): SettingsUiState {
-        return this?.let(SettingsUiState::Loaded) ?: SettingsUiState.Idle
+        return this?.let { settings ->
+            SettingsUiState.Loaded(
+                appInfo = appInfo,
+                settings = settings,
+            )
+        }
+            ?: SettingsUiState.Idle
     }
 }

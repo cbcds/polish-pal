@@ -29,6 +29,21 @@ class AndroidAppConventionPlugin : Plugin<Project> {
                 targetSdk = target.libVersion("android-targetSdk").toInt()
             }
 
+            buildTypes {
+                debug {
+                    isMinifyEnabled = false
+                    isShrinkResources = false
+                }
+                release {
+                    isMinifyEnabled = true
+                    isShrinkResources = true
+
+                    proguardFiles(
+                        getDefaultProguardFile("proguard-android-optimize.txt"),
+                    )
+                }
+            }
+
             packaging {
                 resources {
                     excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -38,6 +53,10 @@ class AndroidAppConventionPlugin : Plugin<Project> {
             compileOptions {
                 sourceCompatibility = Java.sourceCompatibility
                 targetCompatibility = Java.targetCompatibility
+            }
+
+            buildFeatures {
+                buildConfig = true
             }
         }
 

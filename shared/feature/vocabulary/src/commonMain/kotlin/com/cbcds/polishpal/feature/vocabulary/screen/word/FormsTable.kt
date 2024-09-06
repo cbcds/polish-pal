@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -89,6 +90,7 @@ internal fun FormsTable(
             adapter = rememberScrollbarAdapter(scrollState),
             style = defaultScrollbarStyle().copy(
                 thickness = 4.dp,
+                unhoverColor = AppTheme.colorScheme.outline.copy(alpha = 0.3f),
                 hideWhenIdle = false,
             ),
             modifier = Modifier.padding(top = 2.dp),
@@ -159,17 +161,22 @@ private fun FormRow(
     modifier: Modifier = Modifier,
 ) {
     Row(modifier.height(IntrinsicSize.Min)) {
-        Text(
-            text = form?.getPronounLabel().orEmpty(),
-            color = onAccentColor,
-            textAlign = TextAlign.Center,
-            style = AppTheme.typography.bodySmall,
+        Box(
+            contentAlignment = Alignment.CenterStart,
             modifier = Modifier
                 .background(accentColor)
                 .width(pronounColumnWidth)
                 .padding(horizontal = PRONOUN_HORIZONTAL_PADDING.dp, vertical = 6.dp)
                 .fillMaxHeight(),
-        )
+        ) {
+            Text(
+                text = form?.getPronounLabel().orEmpty(),
+                color = onAccentColor,
+                textAlign = TextAlign.Center,
+                style = AppTheme.typography.bodySmall,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
         Box(
             contentAlignment = Alignment.CenterStart,
             modifier = Modifier

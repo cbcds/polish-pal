@@ -5,7 +5,7 @@ import com.cbcds.polishpal.data.model.exercises.ExerciseSettings
 
 interface ExerciseSettingsRepository {
 
-    suspend fun getExerciseSettings(exerciseGroupType: ExerciseGroupType): ExerciseSettings
+    suspend fun getSettings(exerciseGroupType: ExerciseGroupType): ExerciseSettings
 
-    fun saveExerciseSettings(settings: ExerciseSettings)
+    fun saveSettings(settings: ExerciseSettings)
 }

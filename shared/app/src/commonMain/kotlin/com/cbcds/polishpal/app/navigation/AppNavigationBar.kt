@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
-import cafe.adriel.voyager.navigator.tab.Tab
+import com.cbcds.polishpal.core.navigation.AppTab
 
 @Composable
 internal fun AppNavigationBar() {
@@ -22,21 +22,26 @@ internal fun AppNavigationBar() {
 }
 
 @Composable
-private fun RowScope.TabNavigationItem(tab: Tab) {
+private fun RowScope.TabNavigationItem(tab: AppTab) {
     val tabNavigator = LocalTabNavigator.current
 
+    val selected = tabNavigator.current.key == tab.key
+
     NavigationBarItem(
-        selected = tabNavigator.current.key == tab.key,
+        selected = selected,
         onClick = { tabNavigator.current = tab },
         icon = {
-            tab.options.icon?.let { painter ->
-                Icon(
-                    painter = painter,
-                    contentDescription = tab.options.title,
-                    modifier = Modifier.size(28.dp),
-                )
+            val painter = if (selected) {
+                tab.appTabOptions.selectedIcon
+            } else {
+                tab.appTabOptions.unselectedIcon
             }
+            Icon(
+                painter = painter,
+                contentDescription = tab.appTabOptions.title,
+                modifier = Modifier.size(28.dp),
+            )
         },
-        label = { Text(tab.options.title) },
+        label = { Text(tab.appTabOptions.title) },
     )
 }

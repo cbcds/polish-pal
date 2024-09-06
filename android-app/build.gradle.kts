@@ -13,6 +13,12 @@ android {
 
         resourceConfigurations += listOf("en", "pl", "be")
     }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
 }
 
 dependencies {
@@ -20,6 +26,7 @@ dependencies {
 
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.splashscreen)
     implementation(libs.androidx.process)
     implementation(libs.koin.android)
 

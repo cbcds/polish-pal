@@ -1,7 +1,6 @@
 package com.cbcds.polishpal
 
 import android.app.Application
-import android.os.Build
 import com.cbcds.polishpal.app.di.initKoin
 import com.cbcds.polishpal.di.androidAppModule
 import com.cbcds.polishpal.feature.settings.notifications.NotificationChannelCreator
@@ -17,16 +16,22 @@ class PolishPalApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        initKoin(applicationScope, androidAppModule) {
-            androidContext(applicationContext)
-        }
+        initKoin()
 
         createNotificationChannels()
     }
 
-    private fun createNotificationChannels() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            getKoin().get<NotificationChannelCreator>().createNotificationChannels()
+    private fun initKoin() {
+        initKoin(
+            PolishPalAppInfo(),
+            applicationScope,
+            androidAppModule,
+        ) {
+            androidContext(applicationContext)
         }
+    }
+
+    private fun createNotificationChannels() {
+        getKoin().get<NotificationChannelCreator>().createNotificationChannels()
     }
 }

@@ -11,4 +11,6 @@
     <string name="tab_mood_indicative">Абв. лад</string>
     <string name="tab_mood_imperative">Заг. лад</string>
     <string name="tab_mood_conditional">Ум. лад</string>
+
+    <string name="no_forms_in_mood_exist">Дзеяслоў не мае формаў у выбраным ладзе</string>
 </resources>

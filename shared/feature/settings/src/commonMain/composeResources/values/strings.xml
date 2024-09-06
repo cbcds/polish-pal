@@ -4,9 +4,9 @@
     <string name="setting_language">Język</string>
     <string name="setting_notifications">Powiadomienia</string>
     <string name="setting_notifiy_me_at">Powiadom mnie o</string>
-    <string name="setting_send_feedback">Przesłać opinię</string>
-    <string name="setting_share_app">Udostępnić</string>
-    <string name="setting_rate_app">Ocenić</string>
+    <string name="setting_send_feedback">Prześlij opinię</string>
+    <string name="setting_share_app">Udostępnij</string>
+    <string name="setting_rate_app">Oceń</string>
     <string name="setting_about_app">O aplikacji</string>
 
     <string name="theme_light">Jasny</string>

@@ -70,6 +70,7 @@ internal fun WordsList(
             adapter = rememberScrollbarAdapter(state),
             style = defaultScrollbarStyle().copy(
                 thickness = 4.dp,
+                unhoverColor = AppTheme.colorScheme.outline.copy(alpha = 0.4f),
                 hideWhenIdle = true,
             ),
             interactionSource = null,

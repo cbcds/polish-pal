@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * This file has been modified by Darya Sizova to add animations for Scrollbar and code from
+ * This file has been modified by Darya Sizova to add more customization for Scrollbar and code from
  * androidx/compose/foundation/gestures/TapGestureDetector.kt
  */
 

@@ -1,4 +1,4 @@
-package com.cbcds.polishpal.feature.settings
+package com.cbcds.polishpal.feature.settings.screen.about
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding

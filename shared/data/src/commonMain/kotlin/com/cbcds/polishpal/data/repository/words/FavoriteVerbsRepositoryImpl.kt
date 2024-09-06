@@ -1,5 +1,6 @@
 package com.cbcds.polishpal.data.repository.words
 
+import com.cbcds.polishpal.core.kotlin.runSuspendCatching
 import com.cbcds.polishpal.data.datasource.db.words.VerbsDao
 
 internal class FavoriteVerbsRepositoryImpl(
@@ -8,9 +9,9 @@ internal class FavoriteVerbsRepositoryImpl(
 
     override suspend fun setIsVerbFavorite(id: Int, favorite: Boolean) {
         if (favorite) {
-            verbsDao.markVerbAsFavorite(id)
+            runSuspendCatching { verbsDao.markVerbAsFavorite(id) }
         } else {
-            verbsDao.unmarkVerbAsFavorite(id)
+            runSuspendCatching { verbsDao.unmarkVerbAsFavorite(id) }
         }
     }
 }

@@ -24,11 +24,15 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.cbcds.polishpal.core.ui.animation.SlideHorizontallyTransition
 import com.cbcds.polishpal.core.ui.theme.AppTheme
 import com.cbcds.polishpal.feature.exercises.model.ExerciseGroupStatistics
-import com.cbcds.polishpal.shared.core.ui.Res
 import com.cbcds.polishpal.shared.core.ui.ic_checkmark_circle_outline
+import com.cbcds.polishpal.shared.feature.excercises.Res
+import com.cbcds.polishpal.shared.feature.excercises.finish
+import com.cbcds.polishpal.shared.feature.excercises.your_results
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
+import com.cbcds.polishpal.shared.core.ui.Res as uiRes
 
 @Composable
 internal fun ResultsScreen(
@@ -90,7 +94,7 @@ private fun ResultContent(
             .fillMaxWidth(),
     ) {
         Text(
-            text = "Twój wynik",
+            text = stringResource(Res.string.your_results),
             style = AppTheme.typography.titleLarge.copy(fontWeight = FontWeight.Medium),
             modifier = Modifier.padding(top = 28.dp),
         )
@@ -104,7 +108,7 @@ private fun ResultContent(
             verbToResult = state.verbToResult,
             onFavoriteClick = onFavoriteClick,
             modifier = modifier
-                .padding(top = 28.dp, bottom = 56.dp)
+                .padding(top = 28.dp, bottom = 68.dp)
                 .padding(horizontal = 20.dp),
         )
     }
@@ -117,12 +121,12 @@ private fun FloatingActionButton(
     ExtendedFloatingActionButton(
         content = {
             Icon(
-                imageVector = vectorResource(Res.drawable.ic_checkmark_circle_outline),
+                imageVector = vectorResource(uiRes.drawable.ic_checkmark_circle_outline),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
             )
             Text(
-                text = "Skończyć",
+                text = stringResource(Res.string.finish),
                 modifier = Modifier.padding(start = 12.dp),
             )
         },

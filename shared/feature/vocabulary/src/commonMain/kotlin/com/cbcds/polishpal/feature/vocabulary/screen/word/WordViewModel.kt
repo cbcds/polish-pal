@@ -3,14 +3,14 @@ package com.cbcds.polishpal.feature.vocabulary.screen.word
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cbcds.polishpal.data.model.words.Verb
-import com.cbcds.polishpal.data.repository.vocabulary.VocabularyRepository
+import com.cbcds.polishpal.data.repository.vocabulary.VocabularyItemRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 internal class WordViewModel(
     verb: Verb,
-    private val vocabularyRepository: VocabularyRepository,
+    private val vocabularyRepository: VocabularyItemRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(WordUiState(verb))

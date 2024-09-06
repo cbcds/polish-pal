@@ -30,12 +30,8 @@ internal interface VerbsDao {
             "SELECT ROUND(v.priority * (1 - IFNULL(result, 0)), 2) * 10000 + ABS(RANDOM() % 100) as comp_priority, * " +
             "FROM (SELECT * FROM verbs WHERE dkn IN (:aspects)) v " +
             "LEFT JOIN (" +
-                "SELECT SUM(result) / 3 as result, * " +
-                "FROM (" +
-                    "SELECT verb_id, MAX(result) as result FROM exercise_results " +
-                    "WHERE type IN ('$INDICATIVE_MOOD_PAST_TENSE', '$INDICATIVE_MOOD_PRESENT_TENSE', '$INDICATIVE_MOOD_FUTURE_TENSE') " +
-                    "GROUP BY verb_id, type" +
-                ") " +
+                "SELECT verb_id, MAX(result) as result FROM exercise_results " +
+                "WHERE type IN ('$INDICATIVE_MOOD_PAST_TENSE', '$INDICATIVE_MOOD_PRESENT_TENSE', '$INDICATIVE_MOOD_FUTURE_TENSE') " +
                 "GROUP BY verb_id" +
             ") res ON v.id = res.verb_id " +
             "ORDER BY comp_priority DESC " +
