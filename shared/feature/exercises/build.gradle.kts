@@ -17,6 +17,8 @@ dependencies {
     commonMainImplementation(libs.androidx.viewmodel)
     commonMainImplementation(libs.koin.core)
     commonMainImplementation(libs.koin.compose)
+
+    commonTestImplementation(libs.kotlin.test)
 }
 
 compose.resources {

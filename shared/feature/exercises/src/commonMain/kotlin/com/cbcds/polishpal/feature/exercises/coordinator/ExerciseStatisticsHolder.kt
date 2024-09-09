@@ -15,12 +15,9 @@ internal class ExerciseStatisticsHolder {
     private var verbIdToResult = linkedMapOf<Int, CorrectToAll>()
 
     fun start(exercisesNumber: Int) {
-        this.exercisesNumber = exercisesNumber
-        checkedExercisesNumber = 0
+        require(exercisesNumber >= 0) { "exercisesNumber must be non-negative" }
 
-        checkedFormsNumber = 0
-        correctFormsNumber = 0
-        verbIdToResult.clear()
+        this.exercisesNumber = exercisesNumber
     }
 
     fun onExerciseChecked(
@@ -28,6 +25,9 @@ internal class ExerciseStatisticsHolder {
         checkedFormsNumber: Int,
         correctFormsNumber: Int,
     ): ExerciseStatistics {
+        require(checkedFormsNumber >= 0) { "checkedFormsNumber must be non-negative" }
+        require(correctFormsNumber >= 0) { "correctFormsNumber must be non-negative" }
+
         verbIdToResult[verbId] = verbIdToResult[verbId]
             ?.let { (correct, all) -> correct + correctFormsNumber to all + checkedFormsNumber }
             ?: (correctFormsNumber to checkedFormsNumber)
@@ -47,17 +47,28 @@ internal class ExerciseStatisticsHolder {
         return checkedExercisesNumber.divOrZero(exercisesNumber)
     }
 
-    fun getOverallStatistics(): ExerciseGroupStatistics {
+    fun finish(): ExerciseGroupStatistics {
         val overallResult = correctFormsNumber.divOrZero(checkedFormsNumber)
 
         val verbIdToResult = verbIdToResult.mapValuesTo(linkedMapOf()) { (_, correctToAll) ->
             correctToAll.first.divOrZero(correctToAll.second)
         }
 
+        resetStatistics()
+
         return ExerciseGroupStatistics(
             overallResult = overallResult,
             verbIdToResult = verbIdToResult,
         )
+    }
+
+    private fun resetStatistics() {
+        this.exercisesNumber = 0
+        checkedExercisesNumber = 0
+
+        checkedFormsNumber = 0
+        correctFormsNumber = 0
+        verbIdToResult.clear()
     }
 
     private fun Int.divOrZero(other: Int): Float {

@@ -51,7 +51,7 @@ internal class ExerciseCoordinator(
                 progress = statisticsHolder.getCurrentProgress(),
             )
         } else {
-            ExerciseFlowState.Finished(statistics = statisticsHolder.getOverallStatistics())
+            ExerciseFlowState.Finished(statistics = statisticsHolder.finish())
         }
     }
 
