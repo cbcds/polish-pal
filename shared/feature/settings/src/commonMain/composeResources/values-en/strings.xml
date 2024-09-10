@@ -14,4 +14,9 @@
     <string name="theme_system">System</string>
 
     <string name="time_picker_title">Select time</string>
+
+    <string name="app_version">App version:</string>
+
+    <string name="acknowledgements">Acknowledgements</string>
+    <string name="acknowledgement_sjp">Verb forms and meanings: </string>
 </resources>

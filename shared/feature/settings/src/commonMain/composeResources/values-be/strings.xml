@@ -14,4 +14,9 @@
     <string name="theme_system">Сістэмная</string>
 
     <string name="time_picker_title">Выбяры час</string>
+
+    <string name="app_version">Версія праграмы:</string>
+
+    <string name="acknowledgements">Падзякі</string>
+    <string name="acknowledgement_sjp">Формы і значэнні дзеясловаў: </string>
 </resources>

@@ -14,4 +14,9 @@
     <string name="theme_system">Systemowy</string>
 
     <string name="time_picker_title">Wybierz czas</string>
+
+    <string name="app_version">Wersja aplikacji:</string>
+
+    <string name="acknowledgements">Podziękowania</string>
+    <string name="acknowledgement_sjp">Formy i znaczenia czasowników: </string>
 </resources>
