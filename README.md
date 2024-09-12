@@ -1,6 +1,10 @@
 # Polish Pal
 
-Practise Polish with Polish Pal 📚
+Polish verbs conjugation is challenging, but we've got you covered! Learn and practise with Polish Pal 📚
+
+<img src="https://github.com/user-attachments/assets/1353f350-88a0-4102-b869-16edda69858d" alt="meme" width="350">
+
+<em>Source: [Reddit](https://www.reddit.com/r/learnpolish/comments/fcfwg3/english_versus_polish_conjugation_of_eat/)</em>
 
 ## Features
 
@@ -21,6 +25,10 @@ Practise Polish with Polish Pal 📚
     <td> <img src="https://github.com/user-attachments/assets/7c735909-e6a9-40a7-ac80-05071be2bbe9" alt="exercise_2" width="250"> </td>
   </tr> 
 </table>
+
+- Learning reminder, because consistency is a key
+
+<img src="https://github.com/user-attachments/assets/2bbfbd06-3b00-4682-b6a5-0b58dc3fd859" alt="notification" width="250">
 
 ## Technologies
 
